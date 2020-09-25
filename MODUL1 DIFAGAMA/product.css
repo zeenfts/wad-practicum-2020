@@ -28,3 +28,8 @@ nav img{
     width: 90px;
     height: 27px;
 }
+
+table th{
+    vertical-align: middle;
+    text-align: center;
+}
