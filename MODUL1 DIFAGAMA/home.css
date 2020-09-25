@@ -19,6 +19,12 @@ html {
     padding: 30px;
 }
 
+.video-vid{
+    margin-top:20vh;
+    /* width: 30vw;
+    height: 90vh; */
+}
+
 .form-container{
     justify-content: center;
     align-items: center;
