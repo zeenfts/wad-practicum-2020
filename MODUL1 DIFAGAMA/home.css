@@ -1,0 +1,33 @@
+body,
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 130px 0 40px 0;
+    background-color: rgb(85, 82, 82);
+}
+
+.video-ead{
+    /* margin-top:15vh; */
+    background-color: lightyellow;
+    /* width: 30vw;
+    height: 90vh; */
+    padding: 30px;
+}
+
+.form-container{
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color:whitesmoke;
+    width: 40vw;
+}
+
+nav img{
+    width: 90px;
+    height: 27px;
+}

@@ -1,0 +1,30 @@
+body,
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content-cntr{
+    background-color: rgb(85, 82, 82);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 130px 0 40px 0;
+}
+
+.table-content{
+    background-color: whitesmoke;
+}
+
+.table-content h5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    background-color: rgb(85, 82, 82);
+    color: whitesmoke;
+}
+
+nav img{
+    width: 90px;
+    height: 27px;
+}

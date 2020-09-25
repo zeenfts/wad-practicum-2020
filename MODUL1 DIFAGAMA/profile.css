@@ -1,0 +1,29 @@
+body, html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 130px 0 40px 0;
+    background-color: rgb(85, 82, 82);
+    /* border-radius: 5px; */
+}
+
+.profile-content {
+    background-color: whitesmoke;
+}
+
+.profile-content img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45em;
+    height: 8em;
+}
+
+nav img {
+    width: 90px;
+    height: 27px;
+}
