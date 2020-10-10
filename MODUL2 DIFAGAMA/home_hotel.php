@@ -31,6 +31,16 @@
         </div>
     </nav>
 
+    <!-- PHP section -->
+    <?php
+        $img_src = [
+            'https://images.unsplash.com/photo-1424847262089-18a6858bd7e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80', 
+            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
+            'https://images.unsplash.com/photo-1594560913095-8cf34bab82ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80'
+        ];
+    ?>
+
+    <!-- Content -->
     <div class="container-fluid">
         <h2>EAD HOTEL</h2>
         <p>Welcome to 5 Star Hotel</p>
@@ -38,7 +48,7 @@
             <div class="row justify-content-center align-content-center">
                 <div class="col-md-auto">
                     <div class="card">
-                        <img src="" class="card-img-top" alt="1 Single Bed" height="100%">
+                        <img src=<?=$img_src[0]?> class="card-img-top" alt="1 Single Bed" height="100%">
                         <div class="card-body">
                             <h4>Standard</h4>
                             <h6>$90/Day</h6>
@@ -59,7 +69,7 @@
 
                 <div class="col-md-auto">
                     <div class="card">
-                        <img src="" class="card-img-top" alt="1 Double Bed" height="100%">
+                        <img src=<?=$img_src[1]?> class="card-img-top" alt="1 Double Bed" height="100%">
                         <div class="card-body">
                             <h4>Superior</h4>
                             <h6>$150/Day</h6>
@@ -81,7 +91,7 @@
 
                 <div class="col-md-auto">
                     <div class="card">
-                        <img src="" class="card-img-top" alt="2 Double Bed" height="100%">
+                        <img src=<?=$img_src[2]?> class="card-img-top" alt="2 Double Bed" height="100%">
                         <div class="card-body">
                             <h4>Luxury</h4>
                             <h6>$200/Day</h6>
