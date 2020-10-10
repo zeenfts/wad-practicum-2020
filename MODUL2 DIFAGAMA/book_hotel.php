@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking</title>
+    <title>EAD Hotel (Booking)</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -31,11 +31,91 @@
         </div>
     </nav>
 
-    <?php?>
+    <!-- PHP Section -->
+    <?php
+        $method_selected = '';
+        $standard_bk = isset($_POST['standard_book']);
+        $superior_bk = isset($_POST['superior_book']);
+        $luxury_bk = isset($_POST['luxury_book']);
+        // Booking from Book Now buttons
+        if ($standard_bk) {
+            $method_selected = '
+                <select class="custom-select" name="roomtype" disabled><br>
+                <option value="standard">Standard</option><br>
+                <input type="hidden" name="roomtype" value="standard"><br>
+                </select>';
+        } else if ($superior_bk){
+            $method_selected = '
+                <select class="custom-select" name="roomtype" disabled><br>
+                <option value="superior">Superior</option><br>
+                <input type="hidden" name="roomtype" value="superior"><br>
+                </select>';
+        }else if ($luxury_bk){
+            $method_selected = '
+                <select class="custom-select" name="roomtype" disabled><br>
+                <option value="luxury">Luxury</option><br>
+                <input type="hidden" name="roomtype" value="luxury"><br>
+                </select>';
+        //The other method
+        }else {
+            $method_selected = '
+                <select class="custom-select" name="roomtype"><br>
+                <option value="standard">Standard</option><br>
+                <option value="superior">Superior</option><br>
+                <option value="luxury">Luxury</option><br>
+                </select>';
+        }
+    ?>
 
     <!-- Content -->
     <div class="container-fluid">
-        
+        <div class="row justify-content-center align-content-center">
+            <div class="col-md-auto">
+                <form action="my_book.php" method="post">
+                    <div class="form-group">
+                        Name
+                        <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                        Check-in
+                        <input type="date" class="form-control" name="checkin">
+                    </div>
+                    <div class="form-group">
+                        Duration
+                        <input type="number" class="form-control" name="duration" aria-describedby="durationHelp">
+                        <small id="durationHelp" class="form-text text-muted">Day(s)</small>
+                    </div>
+                    <div class="form-group">
+                        Room Type
+                        <?=$method_selected?>
+                    </div>
+                    <div class="form-group">
+                        Add Service(s)
+                        <small id="durationHelp" class="form-text text-muted">$20/Service</small>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="service[]" value="Room Services"
+                                id="service_check1">
+                            Room Service
+                            <br />
+                            <input class="form-check-input" type="checkbox" name="service[]" value="Breakfast"
+                                id="service_check2">
+                            Breakfast
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        Phone Number
+                        <input type="text" class="form-control" name="number">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block" value="Book"></input>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-auto">
+
+            </div>
+
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
