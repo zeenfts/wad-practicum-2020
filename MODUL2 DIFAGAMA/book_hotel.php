@@ -94,8 +94,8 @@
                     </div>
                     <div class="form-group">
                         Duration
-                        <input type="number" class="form-control" name="duration" aria-describedby="durationHelp">
-                        <small id="durationHelp" class="form-text text-muted">Day(s)</small>
+                        <input type="number" class="form-control" name="duration" aria-describedby="dur_info" value=0>
+                        <small id="dur_info" class="form-text text-muted">Day(s)</small>
                     </div>
                     <div class="form-group">
                         Room Type
@@ -103,7 +103,7 @@
                     </div>
                     <div class="form-group">
                         Add Service(s)
-                        <small id="durationHelp" class="form-text text-muted">$20/Service</small>
+                        <small id="dur_info" class="form-text text-muted">$20/Service</small>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="service[]" value="Room Services"
                                 id="service_check1">
@@ -116,7 +116,7 @@
                     </div>
                     <div class="form-group">
                         Phone Number
-                        <input type="text" class="form-control" name="number">
+                        <input type="number" class="form-control" name="phone_num">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-block" value="Book"></input>
