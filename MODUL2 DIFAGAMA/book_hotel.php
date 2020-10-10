@@ -34,9 +34,16 @@
     <!-- PHP Section -->
     <?php
         $method_selected = '';
+        $image_selected = '';
         $standard_bk = isset($_POST['standard_book']);
         $superior_bk = isset($_POST['superior_book']);
         $luxury_bk = isset($_POST['luxury_book']);
+        $img_src = [
+            "https://images.unsplash.com/photo-1424847262089-18a6858bd7e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80", 
+            "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+            "https://images.unsplash.com/photo-1594560913095-8cf34bab82ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80"
+        ];
+
         // Booking from Book Now buttons
         if ($standard_bk) {
             $method_selected = '
@@ -44,18 +51,21 @@
                 <option value="standard">Standard</option><br>
                 <input type="hidden" name="roomtype" value="standard"><br>
                 </select>';
+            $image_selected = $img_src[0];
         } else if ($superior_bk){
             $method_selected = '
                 <select class="custom-select" name="roomtype" disabled><br>
                 <option value="superior">Superior</option><br>
                 <input type="hidden" name="roomtype" value="superior"><br>
                 </select>';
+            $image_selected = $img_src[1];
         }else if ($luxury_bk){
             $method_selected = '
                 <select class="custom-select" name="roomtype" disabled><br>
                 <option value="luxury">Luxury</option><br>
                 <input type="hidden" name="roomtype" value="luxury"><br>
                 </select>';
+            $image_selected = $img_src[2];
         //The other method
         }else {
             $method_selected = '
@@ -64,12 +74,14 @@
                 <option value="superior">Superior</option><br>
                 <option value="luxury">Luxury</option><br>
                 </select>';
+            $image_selected = $img_src[0];
         }
     ?>
 
     <!-- Content -->
     <div class="container-fluid">
         <div class="row justify-content-center align-content-center">
+            <!-- Left -->
             <div class="col-md-auto">
                 <form action="my_book.php" method="post">
                     <div class="form-group">
@@ -111,8 +123,10 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-auto">
 
+            <!-- Right -->
+            <div class="col-md-auto">
+                <img src=<?=$image_selected?> alt="Preview Bedroom" class="image-preview">
             </div>
 
         </div>
