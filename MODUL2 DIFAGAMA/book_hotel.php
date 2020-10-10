@@ -31,8 +31,11 @@
         </div>
     </nav>
 
+    <?php?>
+
+    <!-- Content -->
     <div class="container-fluid">
-        <h2>oke, good</h2>
+        <h2>oke, gooddfddfdf</h2>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

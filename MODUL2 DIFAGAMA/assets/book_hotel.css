@@ -1,11 +1,12 @@
+body,
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
 nav{
     background-color: lightblue;
 }
-/* 
-h2{
-    margin-top: 200px;
-} */
 
 .container-fluid{
-    padding-top: 70px;
+    padding-top: 70px 0 10px 0;
 } 
