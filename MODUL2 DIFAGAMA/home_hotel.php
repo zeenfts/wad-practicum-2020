@@ -31,8 +31,79 @@
         </div>
     </nav>
 
-    <div class="container-fluid cust-cont">
-        <h2>test aja dulu</h2>
+    <div class="container-fluid">
+        <h2>EAD HOTEL</h2>
+        <p>Welcome to 5 Star Hotel</p>
+        <form action="book_hotel.php" method="post">
+            <div class="row justify-content-center align-content-center">
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="" class="card-img-top" alt="1 Single Bed" height="100%">
+                        <div class="card-body">
+                            <h4>Standard</h4>
+                            <h6>$90/Day</h6>
+                            <div class="card-header">
+                                Facilities
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">1 Single Bed</li>
+                                <li class="list-group-item">1 Bathroom</li>
+                            </ul>
+
+                        </div>
+                        <div class="card-footer">
+                            <button name="book_now" class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="" class="card-img-top" alt="1 Double Bed" height="100%">
+                        <div class="card-body">
+                            <h4>Superior</h4>
+                            <h6>$150/Day</h6>
+                            <div class="card-header">
+                                Facilities
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">1 Double Bed</li>
+                                <li class="list-group-item">1 Television and Wi-Fi</li>
+                                <li class="list-group-item">1 Bathroom with hot water</li>
+                            </ul>
+
+                        </div>
+                        <div class="card-footer">
+                            <button name="book_now" class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-auto">
+                    <div class="card">
+                        <img src="" class="card-img-top" alt="2 Double Bed" height="100%">
+                        <div class="card-body">
+                            <h4>Luxury</h4>
+                            <h6>$200/Day</h6>
+                            <div class="card-header">
+                                Facilities
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">2 Double Bed</li>
+                                <li class="list-group-item">2 Bathroom with how water</li>
+                                <li class="list-group-item">1 Kitchen</li>
+                                <li class="list-group-item">1 Television and Wi-Fi</li>
+                                <li class="list-group-item">1 Workroom</li>
+                            </ul>
+
+                        </div>
+                        <div class="card-footer">
+                            <button name="book_now" class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
