@@ -83,10 +83,10 @@
         <div class="row justify-content-center align-content-center">
             <!-- Left -->
             <div class="col-md-auto">
-                <form action="my_book.php" method="get">
+                <form action="my_book.php" method="post">
                     <div class="form-group">
                         Name
-                        <input type="text" class="form-control" name="nama">
+                        <input type="text" class="form-control" name="name">
                     </div>
                     <div class="form-group">
                         Check-in

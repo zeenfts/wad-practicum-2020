@@ -40,7 +40,7 @@
         $duration = $_POST['duration'];
         $checkout = '';
         $roomtype = $_POST['roomtype'];
-        $phone = $_POST['phone'];
+        $phone = $_POST['phone_num'];
         $service = $_POST['service'];
         $service_dsply = 'no service';
         $total_price = 0;
