@@ -47,32 +47,32 @@
         // Booking from Book Now buttons
         if ($standard_bk) {
             $method_selected = '
-                <select class="custom-select" name="roomtype" disabled><br>
-                <option value="standard">Standard</option><br>
-                <input type="hidden" name="roomtype" value="standard"><br>
+                <select class="custom-select" name="roomtype" disabled>
+                <option value="standard">Standard</option>
+                <input type="hidden" name="roomtype" value="standard">
                 </select>';
             $image_selected = $img_src[0];
         } else if ($superior_bk){
             $method_selected = '
-                <select class="custom-select" name="roomtype" disabled><br>
-                <option value="superior">Superior</option><br>
-                <input type="hidden" name="roomtype" value="superior"><br>
+                <select class="custom-select" name="roomtype" disabled>
+                <option value="superior">Superior</option>
+                <input type="hidden" name="roomtype" value="superior">
                 </select>';
             $image_selected = $img_src[1];
         }else if ($luxury_bk){
             $method_selected = '
-                <select class="custom-select" name="roomtype" disabled><br>
-                <option value="luxury">Luxury</option><br>
-                <input type="hidden" name="roomtype" value="luxury"><br>
+                <select class="custom-select" name="roomtype" disabled>
+                <option value="luxury">Luxury</option>
+                <input type="hidden" name="roomtype" value="luxury">
                 </select>';
             $image_selected = $img_src[2];
         //The other method
         }else {
             $method_selected = '
-                <select class="custom-select" name="roomtype"><br>
-                <option value="standard">Standard</option><br>
-                <option value="superior">Superior</option><br>
-                <option value="luxury">Luxury</option><br>
+                <select class="custom-select" name="roomtype">
+                <option value="standard">Standard</option>
+                <option value="superior">Superior</option>
+                <option value="luxury">Luxury</option>
                 </select>';
             $image_selected = $img_src[0];
         }
