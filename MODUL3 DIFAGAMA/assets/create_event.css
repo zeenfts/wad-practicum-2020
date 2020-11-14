@@ -15,3 +15,29 @@ nav{
     text-align: left;
     color: rgb(56, 201, 153);
 }
+
+.card-temp{
+    padding: 10px;
+}
+
+.card{
+    width:45rem;
+    margin: auto;
+    padding: 0;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+    -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+}
+
+.card-body{
+    padding: 15px;
+}
+
+.lform{
+    background-color: rgb(218, 58, 58);
+}
+
+.rform{
+    background-color: rgb(77, 57, 233);
+}
