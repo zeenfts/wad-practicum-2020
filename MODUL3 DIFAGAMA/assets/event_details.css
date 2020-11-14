@@ -11,7 +11,7 @@ nav{
     padding: 70px 25px 10px 25px;
 } 
 
-.container-fluid h5, .container-fluid p{
+.container-fluid h5{
     text-align: left;
     color: rgb(56, 201, 153);
 }

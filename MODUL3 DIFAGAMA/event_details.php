@@ -54,13 +54,16 @@
                     style="width: 100%;max-height: 20rem">
                 <div class="card-body">
                     <h4><?= $row['name']?></h4>
+                    <h6><b>Deskripsi</b></h6>
+                    <p><?= $row['deskripsi']?></p>
+                    <h6><b>Informasi Event</b></h6>
                     <p><i class="fa" style="font-size:25px; color: orange">&#xf073;</i><?= $row['tanggal']?></p>
                     <p><i class="fa" style="font-size:25px; color: orange">&#xf041;</i><?= $row['tempat']?></p>
                     <p><i class="fa" style="font-size:25px; color: orange">&#xf017;</i> <?= $row['mulai']?> -
                         <?= $row['berakhir']?></p>
                     <p><b>Kategori</b>: <?= $row['kategori']?></p>
-                    <h5><b>HTM: <?= $row['harga']?></b></h5>
-                    <h5><b>Benefit</b></h5>
+                    <h6><b>HTM: <?= $row['harga']?></b></h6>
+                    <h6><b>Benefit</b></h6>
                     <p>&#x2022; <?= $row['benefit']?></p>
                 </div>
 
