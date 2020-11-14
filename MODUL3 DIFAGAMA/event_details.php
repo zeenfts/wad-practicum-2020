@@ -63,14 +63,127 @@
                     <h5><b>Benefit</b></h5>
                     <p>&#x2022; <?= $row['benefit']?></p>
                 </div>
+
+                <div class="card-footer align-content-center justify-content-center">
+                    <input type="submit" class="btn btn-primary" name="edit_event" value="Edit" data-toggle="modal"
+                        data-target="#edit_data_modal"></input>
+                </div>
+
                 <form action="home_event.php" method="post">
-                    <div class="card-footer form-group align-content-center justify-content-center">
-                        <!-- <a type="button" class="btn btn-primary"
-                        href="event_details.php?id=<?= $row['id']?>">Edit</a>
-                    <a type="button" class="btn btn-danger"
-                        href="event_details.php?id=<?= $row['id']?>">Delete</a> -->
-                        <input type="submit" class="btn btn-primary" value="Edit"></input>
+                    <div class="card-footer align-content-center justify-content-center">
                         <input type="submit" class="btn btn-danger" name="del_event" value="Delete"></input>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit event -->
+    <div class="modal" id="edit_data_modal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Content Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="home_event.php" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row justify-content-center align-content-center">
+                            <!-- Left form -->
+                            <div class="col-sm-auto card-temp">
+                                <div class="card">
+                                    <div class="card-header lform"></div>
+                                    <div class="card-body">
+                                        <div class="form-group row-sm-4">
+                                            Name
+                                            <input type="text" class="form-control" name="namaa" value=<?= $row['name']?>>
+                                        </div>
+
+                                        <div class="form-group row-sm-4">
+                                            Deskripsi
+                                            <textarea class="form-control" name="deskripsi" rows="8"><?= $row['deskripsi']?></textarea>
+                                        </div>
+
+                                        <div class="form-group row-sm-4">
+                                            Upload Gambar
+                                            <input type="file" class="form-control" name="upload_img">
+                                        </div>
+
+                                        <div class="form-group row-sm-4">
+                                            Kategori
+                                            <div class="col-sm-4">
+                                                <input class="form-check-input" type="radio" value="Online" name="cats">
+                                                Online
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input class="form-check-input" type="radio" value="Offline" name="cats">
+                                                Offline
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right form -->
+                            <div class="col-sm-auto card-temp">
+                                <div class="card">
+                                    <div class="card-header rform"></div>
+                                    <div class="card-body">
+                                        <div class="form-group row-sm-4">
+                                            Tanggal
+                                            <input type="date" class="form-control" name="tgll" value=<?= $row['tanggal']?>>
+                                        </div>
+
+                                        <div class="form-group row-sm-auto">
+                                            Jam Mulai
+                                            <input type="time" class="form-control col-sm-auto" name="timest" value=<?= $row['mulai']?>>
+                                            Jam Berakhir
+                                            <input type="time" class="form-control col-sm-auto" name="timend" value=<?= $row['berakhir']?>>
+                                        </div>
+
+                                        <div class="form-group row-sm-4">
+                                            Tempat
+                                            <input type="text" class="form-control" name="place" value=<?= $row['tempat']?>>
+                                        </div>
+
+                                        <div class="form-group row-sm-4">
+                                            Harga
+                                            <input type="number" class="form-control" name="price" value=<?= $row['harga']?>>
+                                        </div>
+
+                                        <div class="form-group row-sm-4">
+                                            Benefit
+                                            <div class="form-check">
+                                                <div class="col-md-auto">
+                                                    <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                        value="Snacks" id="benefit_check1">
+                                                    Snacks
+                                                    <br />
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                        value="Sertifikat" id="benefit_check2">
+                                                    Sertifikat
+                                                    <br />
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                        value="Souvenir" id="benefit_check3">
+                                                    Souvenir
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" value="Cancel" data-dismiss="modal"></input>
+                        <input type="submit" class="btn btn-primary" value="Save Changes" name="save_edit"></input>
                     </div>
                 </form>
             </div>

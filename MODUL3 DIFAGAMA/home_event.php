@@ -39,6 +39,7 @@
         require 'db_conn_ev.php';
         $submit_selected = isset($_POST["submit_form"]);
         $delete_selected = isset($_POST["del_event"]);
+        $edit_selected = isset($_POST["save_edit"]);
 
         if($submit_selected) {
             add_data($_POST);
@@ -49,6 +50,10 @@
 
         if($delete_selected) {
             del_data($id_num);
+        }
+
+        if($edit_selected) {
+            edit_data($id_num);
         }
 
         $res_row = query("SELECT * FROM events_tb");
