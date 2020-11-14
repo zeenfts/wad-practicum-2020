@@ -1,0 +1,17 @@
+body,
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav{
+    background-color: lightblue;
+}
+
+.container-fluid{
+    padding: 70px 0 10px 0;
+} 
+
+.container-fluid h5, .container-fluid p{
+    text-align: center;
+    color: rgb(56, 201, 153);
+}
