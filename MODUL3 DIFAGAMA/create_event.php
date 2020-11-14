@@ -68,12 +68,12 @@
                             <div class="form-group row-sm-4">
                                 Kategori
                                 <div class="col-sm-4">
-                                    <input class="form-check-input" type="radio" value="Male" name="cats"
+                                    <input class="form-check-input" type="radio" value="Online" name="cats"
                                         required="required">
                                     Online
                                 </div>
                                 <div class="col-sm-4">
-                                    <input class="form-check-input" type="radio" value="Female" name="cats"
+                                    <input class="form-check-input" type="radio" value="Offline" name="cats"
                                         required="required">
                                     Offline
                                 </div>
@@ -95,9 +95,6 @@
                             <div class="form-group row-sm-auto">
                                 Jam Mulai
                                 <input type="time" class="form-control col-sm-auto" name="timest" required="required">
-                            </div>
-
-                            <div class="form-group row-sm-auto">
                                 Jam Berakhir
                                 <input type="time" class="form-control col-sm-auto" name="timend" required="required">
                             </div>
@@ -116,19 +113,19 @@
                                 Benefit
                                 <div class="form-check">
                                     <div class="col-md-auto">
-                                        <input class="form-check-input" type="checkbox" name="benefit[]" value="Snacks"
+                                        <input class="form-check-input" type="checkbox" name="benefits[]" value="Snacks" \
                                             id="benefit_check1">
                                         Snacks
                                         <br />
                                     </div>
                                     <div class="col-md-auto">
-                                        <input class="form-check-input" type="checkbox" name="benefit[]" value="Certf"
+                                        <input class="form-check-input" type="checkbox" name="benefits[]" value="Sertifikat" \
                                             id="benefit_check2">
                                         Sertifikat
                                         <br />
                                     </div>
                                     <div class="col-md-auto">
-                                        <input class="form-check-input" type="checkbox" name="benefit[]" value="Souv"
+                                        <input class="form-check-input" type="checkbox" name="benefits[]" value="Souvenir" \
                                             id="benefit_check3">
                                         Souvenir
                                     </div>

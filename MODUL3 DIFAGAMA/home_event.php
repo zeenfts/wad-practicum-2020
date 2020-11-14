@@ -39,8 +39,31 @@
         require 'db_conn_ev.php';
         $submit_selected = isset($_POST["submit_form"]);
 
-        if($sign_in_selected) {
+        if($submit_selected) {
             add_data($_POST);
+        }
+
+        $res_row = query("SELECT * FROM events_tb");
+        // echo $res_row;
+        if($res_row==0){
+            $content_hm = '<h6>No Event Found</h6>';
+        }else{
+            foreach ($res_row as $row) {
+                $content_hm .= '
+                <div class="col-md-2">
+                    <div class="card" style="background-color: white;box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;height: auto;">
+                        <img src="./assets/img/'.$row['gambar'].'" class="card-img-top" alt="..." style="width: 100%;max-height: 10rem">
+                        <div class="card-body">
+                            <h4>'.$row['name'].'</h4>
+                            <p><i style="font-size:24px;color: orange" class="fa">&#xf073;</i>'.$row['tanggal'].'</p>
+                            <p><i style="font-size:24px;color: orange" class="fa">&#xf041;</i>'.$row['tempat'].'</p>
+                            <p>Kategori : Event '.$row['kategori'].'</p>
+                            <a type="button" class="btn btn-primary justify-content-right" href="event_details.php?id='.$row['id'].'">Detail</a>
+                        </div>
+                    </div>
+                </div>
+            ';
+            }
         }
     ?>
 
@@ -48,30 +71,7 @@
     <div class="container-fluid">
         <h5>WELCOME TO EAD EVENTS!</h5>
         <div class="row justify-content-center align-content-center">
-            <div class="col-md-auto">
-                <div class="card">
-                    <!-- <img src=<?=$img_src[0]?> class="card-img-top" alt="1 Single Bed" height="100%"> -->
-                    <div class="card-body">
-                        <h4>Standard</h4>
-                        <h6>$90/Day</h6>
-                        <div class="card-header">
-                            Facilities
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">1 Single Bed</li>
-                            <li class="list-group-item">1 Bathroom</li>
-                        </ul>
-
-                    </div>
-                    <div class="card-footer">
-                        <button name="standard_book" class="btn btn-primary">Book Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <?php if(isset($_POST['submit_form'])){ 
-                echo "<script>$('#thankyouModal').modal('show')</script>";
-            } ?>
+            <?=$content_hm?>
         </div>
     </div>
 
