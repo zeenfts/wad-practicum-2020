@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,29 +33,46 @@
         </div>
     </nav>
 
+    <!-- PHP section -->
+    <?php
+        require 'db_conn_ev.php';
+        session_start();
+        if(isset($_GET['id'])) {
+            $id_num = $_GET['id'];
+            $row = query("SELECT * FROM events_tb WHERE id=$id_num")[0];
+            $_SESSION['id_no'] = $id_num;
+        }
+    ?>
+
     <!-- Content -->
     <div class="container-fluid">
         <h5>Detail Event!</h5>
         <div class="row justify-content-center align-content-center">
-            <div class="col-md-auto">
-                <div class="card">
-                    <!-- <img src=<?=$img_src[0]?> class="card-img-top" alt="1 Single Bed" height="100%"> -->
-                    <div class="card-body">
-                        <h4>Standard</h4>
-                        <h6>$90/Day</h6>
-                        <div class="card-header">
-                            Facilities
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">1 Single Bed</li>
-                            <li class="list-group-item">1 Bathroom</li>
-                        </ul>
-
-                    </div>
-                    <div class="card-footer">
-                        <button name="standard_book" class="btn btn-primary">Book Now</button>
-                    </div>
+            <div class="card"
+                style="width:50rem; height: auto; box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;">
+                <img src="./assets/img/<?= $row['gambar']?>" class="card-img-top" alt="..."
+                    style="width: 100%;max-height: 20rem">
+                <div class="card-body">
+                    <h4><?= $row['name']?></h4>
+                    <p><i class="fa" style="font-size:25px; color: orange">&#xf073;</i><?= $row['tanggal']?></p>
+                    <p><i class="fa" style="font-size:25px; color: orange">&#xf041;</i><?= $row['tempat']?></p>
+                    <p><i class="fa" style="font-size:25px; color: orange">&#xf017;</i> <?= $row['mulai']?> -
+                        <?= $row['berakhir']?></p>
+                    <p><b>Kategori</b>: <?= $row['kategori']?></p>
+                    <h5><b>HTM: <?= $row['harga']?></b></h5>
+                    <h5><b>Benefit</b></h5>
+                    <p>&#x2022; <?= $row['benefit']?></p>
                 </div>
+                <form action="home_event.php" method="post">
+                    <div class="card-footer form-group align-content-center justify-content-center">
+                        <!-- <a type="button" class="btn btn-primary"
+                        href="event_details.php?id=<?= $row['id']?>">Edit</a>
+                    <a type="button" class="btn btn-danger"
+                        href="event_details.php?id=<?= $row['id']?>">Delete</a> -->
+                        <input type="submit" class="btn btn-primary" value="Edit"></input>
+                        <input type="submit" class="btn btn-danger" name="del_event" value="Delete"></input>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -69,4 +87,5 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

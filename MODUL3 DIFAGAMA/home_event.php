@@ -38,27 +38,37 @@
     <?php
         require 'db_conn_ev.php';
         $submit_selected = isset($_POST["submit_form"]);
+        $delete_selected = isset($_POST["del_event"]);
 
         if($submit_selected) {
             add_data($_POST);
         }
 
+        session_start();
+        $id_num = $_SESSION['id_no'];
+
+        if($delete_selected) {
+            del_data($id_num);
+        }
+
         $res_row = query("SELECT * FROM events_tb");
         // echo $res_row;
         if($res_row==0){
-            $content_hm = '<h6>No Event Found</h6>';
+            $content_hm = '<h6>No Events Found</h6>';
         }else{
             foreach ($res_row as $row) {
                 $content_hm .= '
                 <div class="col-md-2">
-                    <div class="card" style="background-color: white;box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;height: auto;">
+                    <div class="card" style="height: auto; box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;">
                         <img src="./assets/img/'.$row['gambar'].'" class="card-img-top" alt="..." style="width: 100%;max-height: 10rem">
                         <div class="card-body">
                             <h4>'.$row['name'].'</h4>
-                            <p><i style="font-size:24px;color: orange" class="fa">&#xf073;</i>'.$row['tanggal'].'</p>
-                            <p><i style="font-size:24px;color: orange" class="fa">&#xf041;</i>'.$row['tempat'].'</p>
+                            <p><i class="fa" style="font-size:25px; color: orange">&#xf073;</i>'.$row['tanggal'].'</p>
+                            <p><i class="fa" style="font-size:25px; color: orange">&#xf041;</i>'.$row['tempat'].'</p>
                             <p>Kategori : Event '.$row['kategori'].'</p>
-                            <a type="button" class="btn btn-primary justify-content-right" href="event_details.php?id='.$row['id'].'">Detail</a>
+                        </div>
+                        <div class="card-footer">
+                            <a type="button" class="btn btn-primary" href="event_details.php?id='.$row['id'].'">Detail</a>
                         </div>
                     </div>
                 </div>

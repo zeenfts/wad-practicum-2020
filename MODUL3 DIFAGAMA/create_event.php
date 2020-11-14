@@ -42,7 +42,7 @@
     <!-- Content -->
     <div class="container-fluid">
         <h5>Buat Event</h5>
-        <form action="home_event.php" method="POST" enctype="multipart/form-data">
+        <form action="home_event.php" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center align-content-center">
                 <!-- Left form -->
                 <div class="col-sm-auto card-temp">
