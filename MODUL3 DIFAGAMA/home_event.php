@@ -34,6 +34,16 @@
         </div>
     </nav>
 
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_ev.php';
+        $submit_selected = isset($_POST["submit_form"]);
+
+        if($sign_in_selected) {
+            add_data($_POST);
+        }
+    ?>
+
     <!-- Content -->
     <div class="container-fluid">
         <h5>WELCOME TO EAD EVENTS!</h5>
@@ -58,6 +68,10 @@
                     </div>
                 </div>
             </div>
+
+            <?php if(isset($_POST['submit_form'])){ 
+                echo "<script>$('#thankyouModal').modal('show')</script>";
+            } ?>
         </div>
     </div>
 

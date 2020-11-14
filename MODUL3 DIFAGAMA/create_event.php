@@ -33,11 +33,16 @@
             </ul>
         </div>
     </nav>
+    
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_ev.php';
+    ?>
 
     <!-- Content -->
     <div class="container-fluid">
         <h5>Buat Event</h5>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="home_event.php" method="POST" enctype="multipart/form-data">
             <div class="row justify-content-center align-content-center">
                 <!-- Left form -->
                 <div class="col-sm-auto card-temp">
@@ -51,13 +56,13 @@
 
                             <div class="form-group row-sm-4">
                                 Deskripsi
-                                <textarea class="form-control" name="description" rows="10"
+                                <textarea class="form-control" name="deskripsi" rows="10"
                                     required="required"></textarea>
                             </div>
 
                             <div class="form-group row-sm-4">
                                 Upload Gambar
-                                <input type="file" class="form-control" name="uploads" required="required">
+                                <input type="file" class="form-control" name="upload_img" required="required">
                             </div>
 
                             <div class="form-group row-sm-4">
