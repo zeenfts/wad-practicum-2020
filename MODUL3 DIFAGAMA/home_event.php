@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +36,29 @@
 
     <!-- Content -->
     <div class="container-fluid">
-        <h5>WELCOME TO EAD HOTEL EVENTS!</h5>
+        <h5>WELCOME TO EAD EVENTS!</h5>
+        <div class="row justify-content-center align-content-center">
+            <div class="col-md-auto">
+                <div class="card">
+                    <!-- <img src=<?=$img_src[0]?> class="card-img-top" alt="1 Single Bed" height="100%"> -->
+                    <div class="card-body">
+                        <h4>Standard</h4>
+                        <h6>$90/Day</h6>
+                        <div class="card-header">
+                            Facilities
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">1 Single Bed</li>
+                            <li class="list-group-item">1 Bathroom</li>
+                        </ul>
+
+                    </div>
+                    <div class="card-footer">
+                        <button name="standard_book" class="btn btn-primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -48,4 +71,5 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
 </body>
+
 </html>
