@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/event_details.css">
 </head>
 
@@ -52,31 +53,42 @@
                 style="width:50rem; height: auto; box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;">
                 <img src="./assets/img/<?= $row['gambar']?>" class="card-img-top" alt="..."
                     style="width: 100%;max-height: 20rem">
+                <div class="card-header"></div>
                 <div class="card-body">
-                    <h4><?= $row['name']?></h4>
+                    <h4><b><?= $row['name']?></b></h4><br>
                     <h6><b>Deskripsi</b></h6>
                     <p><?= $row['deskripsi']?></p>
                     <h6><b>Informasi Event</b></h6>
-                    <p><i class="fa" style="font-size:25px; color: orange">&#xf073;</i><?= $row['tanggal']?></p>
-                    <p><i class="fa" style="font-size:25px; color: orange">&#xf041;</i><?= $row['tempat']?></p>
-                    <p><i class="fa" style="font-size:25px; color: orange">&#xf017;</i> <?= $row['mulai']?> -
+                    <p><i class="fa"
+                            style="font-size:18px; color: rgb(236, 150, 67); padding-right:1em">&#xf073;</i><?= $row['tanggal']?>
+                    </p>
+                    <p><i class="fa"
+                            style="font-size:22px; color: rgb(236, 150, 67); padding-right:1em">&#xf041;</i><?= $row['tempat']?>
+                    </p>
+                    <p><i class="fa"
+                            style="font-size:18px; color: rgb(236, 150, 67); padding-right:1em">&#xf017;</i><?= $row['mulai']?>
+                        -
                         <?= $row['berakhir']?></p>
                     <p><b>Kategori</b>: <?= $row['kategori']?></p>
-                    <h6><b>HTM: <?= $row['harga']?></b></h6>
+                    <h6><b>HTM: Rp <?= $row['harga']?></b></h6>
                     <h6><b>Benefit</b></h6>
                     <p>&#x2022; <?= $row['benefit']?></p>
                 </div>
 
-                <div class="card-footer align-content-center justify-content-center">
-                    <input type="submit" class="btn btn-primary" name="edit_event" value="Edit" data-toggle="modal"
-                        data-target="#edit_data_modal"></input>
-                </div>
+                <div class="card-footer text-center">
+                    <div class="row">
+                        <div class="col-md-6 text-right">
+                            <input type="submit" class="btn btn-primary" name="edit_event" value="Edit" data-toggle="modal"
+                                data-target="#edit_data_modal"></input>
+                        </div>
 
-                <form action="home_event.php" method="post">
-                    <div class="card-footer align-content-center justify-content-center">
-                        <input type="submit" class="btn btn-danger" name="del_event" value="Delete"></input>
+                        <div class="col-md-6 text-left">
+                            <form action="home_event.php" method="post">
+                                <input type="submit" class="btn btn-danger" name="del_event" value="Delete" size="10"></input>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
 
             </div>
         </div>
@@ -96,70 +108,95 @@
                     <div class="modal-body">
                         <div class="row justify-content-center align-content-center">
                             <!-- Left form -->
-                            <div class="col-sm-auto card-temp">
+                            <div class="col-md-auto card-temp">
                                 <div class="card">
                                     <div class="card-header lform"></div>
                                     <div class="card-body">
-                                        <div class="form-group row-sm-4">
-                                            Name
-                                            <input type="text" class="form-control" name="namaa" value=<?= $row['name']?>>
+                                        <div class="form-group row-md-4">
+                                            <b>Name</b>
+                                            <input type="text" class="form-control" name="namaa"
+                                                value=<?= $row['name']?>>
+                                        </div>
+                                        <div class="form-group row-md-4">
+                                            <b>Deskripsi</b>
+                                            <textarea class="form-control" name="deskripsi"
+                                                rows="5"><?= $row['deskripsi']?></textarea>
                                         </div>
 
-                                        <div class="form-group row-sm-4">
-                                            Deskripsi
-                                            <textarea class="form-control" name="deskripsi" rows="8"><?= $row['deskripsi']?></textarea>
+                                        <div class="form-group row-md-4">
+                                            <b>Upload Gambar</b>
+                                            <input type="file" class="form-control" name="upload_img"
+                                                value="<%=(request.querystring(<?= $row['deskripsi']?>)%>"
+                                                accept="image/*">
                                         </div>
 
-                                        <div class="form-group row-sm-4">
-                                            Upload Gambar
-                                            <input type="file" class="form-control" name="upload_img">
-                                        </div>
-
-                                        <div class="form-group row-sm-4">
-                                            Kategori
-                                            <div class="col-sm-4">
+                                        <div class="form-group row-md-4">
+                                            <b>Kategori</b>
+                                            <?php 
+                                            if(strcasecmp($row['kategori'], 'online') == 0){
+                                            echo '<div class="col-md-4">
+                                                <input class="form-check-input" type="radio" value="Online" name="cats" checked>
+                                                Online
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input class="form-check-input" type="radio" value="Offline" name="cats">
+                                                Offline
+                                            </div>';}else{
+                                            echo '<div class="col-md-4">
                                                 <input class="form-check-input" type="radio" value="Online" name="cats">
                                                 Online
                                             </div>
-                                            <div class="col-sm-4">
-                                                <input class="form-check-input" type="radio" value="Offline" name="cats">
+                                            <div class="col-md-4">
+                                                <input class="form-check-input" type="radio" value="Offline" name="cats" checked>
                                                 Offline
-                                            </div>
+                                            </div>';}
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Right form -->
-                            <div class="col-sm-auto card-temp">
+                            <div class="col-md-auto card-temp">
                                 <div class="card">
                                     <div class="card-header rform"></div>
                                     <div class="card-body">
-                                        <div class="form-group row-sm-4">
-                                            Tanggal
-                                            <input type="date" class="form-control" name="tgll" value=<?= $row['tanggal']?>>
+                                        <div class="form-group row-md-4">
+                                            <b>Tanggal</b>
+                                            <input type="date" class="form-control" name="tgll"
+                                                value=<?= $row['tanggal']?>>
                                         </div>
 
-                                        <div class="form-group row-sm-auto">
-                                            Jam Mulai
-                                            <input type="time" class="form-control col-sm-auto" name="timest" value=<?= $row['mulai']?>>
-                                            Jam Berakhir
-                                            <input type="time" class="form-control col-sm-auto" name="timend" value=<?= $row['berakhir']?>>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <b>Jam Mulai</b>
+                                                <input type="time" class="form-control" name="timest"
+                                                    value=<?= $row['mulai']?>>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <b>Jam Berakhir</b>
+                                                <input type="time" class="form-control" name="timend"
+                                                    value=<?= $row['berakhir']?>>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group row-sm-4">
-                                            Tempat
-                                            <input type="text" class="form-control" name="place" value=<?= $row['tempat']?>>
+                                        <div class="form-group row-md-4">
+                                            <b>Tempat</b>
+                                            <input type="text" class="form-control" name="place"
+                                                value=<?= $row['tempat']?>>
                                         </div>
 
-                                        <div class="form-group row-sm-4">
-                                            Harga
-                                            <input type="number" class="form-control" name="price" value=<?= $row['harga']?>>
+                                        <div class="form-group row-md-4">
+                                            <b>Harga</b>
+                                            <input type="number" class="form-control" name="price"
+                                                value=<?= $row['harga']?>>
                                         </div>
 
-                                        <div class="form-group row-sm-4">
-                                            Benefit
-                                            <div class="form-check">
+                                        <div class="form-group row-md-4">
+                                            <b>Benefit</b>
+                                            <?php
+                                            if($row['benefit'] == 'Nothing'){
+                                            echo '<div class="form-check">
                                                 <div class="col-md-auto">
                                                     <input class="form-check-input" type="checkbox" name="benefits[]"
                                                         value="Snacks" id="benefit_check1">
@@ -177,7 +214,47 @@
                                                         value="Souvenir" id="benefit_check3">
                                                     Souvenir
                                                 </div>
-                                            </div>
+                                            </div>';}else{
+                                            echo '<div class="form-check">';
+                                            if(in_array("Snacks", explode(', ', $row['benefit']))){
+                                                echo '<div class="col-md-auto">
+                                                <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                    value="Snacks" id="benefit_check1" checked>
+                                                Snacks
+                                                <br />
+                                            </div>';}else{
+                                                echo '<div class="col-md-auto">
+                                                <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                    value="Snacks" id="benefit_check1">
+                                                Snacks
+                                                <br />
+                                            </div>';}
+                                            if(in_array("Sertifikat", explode(', ', $row['benefit']))){
+                                                echo '<div class="col-md-auto">
+                                                <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                    value="Sertifikat" id="benefit_check2" checked>
+                                                Sertifikat
+                                                <br />
+                                            </div>';}else{
+                                                echo '<div class="col-md-auto">
+                                                <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                    value="Sertifikat" id="benefit_check2">
+                                                Sertifikat
+                                                <br />
+                                            </div>';}
+                                            if(in_array("Souvenir", explode(', ', $row['benefit']))){
+                                                echo '<div class="col-md-auto">
+                                                <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                    value="Souvenir" id="benefit_check3" checked>
+                                                Souvenir
+                                            </div>';}else{
+                                                echo '<div class="col-md-auto">
+                                                <input class="form-check-input" type="checkbox" name="benefits[]"
+                                                    value="Souvenir" id="benefit_check3">
+                                                Souvenir
+                                            </div>';}
+                                            echo '</div>';}
+                                            ?>
                                         </div>
                                     </div>
                                 </div>

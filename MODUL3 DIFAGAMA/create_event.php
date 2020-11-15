@@ -33,7 +33,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <!-- PHP Section -->
     <?php
         require 'db_conn_ev.php';
@@ -45,34 +45,34 @@
         <form action="home_event.php" method="post" enctype="multipart/form-data">
             <div class="row justify-content-center align-content-center">
                 <!-- Left form -->
-                <div class="col-sm-auto card-temp">
+                <div class="col-md-auto card-temp">
                     <div class="card">
                         <div class="card-header lform"></div>
                         <div class="card-body">
-                            <div class="form-group row-sm-4">
-                                Name
+                            <div class="form-group row-md-4">
+                                <b>Name</b>
                                 <input type="text" class="form-control" name="namaa" required="required">
                             </div>
 
-                            <div class="form-group row-sm-4">
-                                Deskripsi
-                                <textarea class="form-control" name="deskripsi" rows="9"
-                                    required="required"></textarea>
+                            <div class="form-group row-md-4">
+                                <b>Deskripsi</b>
+                                <textarea class="form-control" name="deskripsi" rows="7" required="required"></textarea>
                             </div>
 
-                            <div class="form-group row-sm-4">
-                                Upload Gambar
-                                <input type="file" class="form-control" name="upload_img" required="required">
+                            <div class="form-group row-md-4">
+                                <b>Upload Gambar</b>
+                                <input type="file" class="form-control" name="upload_img" required="required"
+                                    accept="image/*">
                             </div>
 
-                            <div class="form-group row-sm-4">
-                                Kategori
-                                <div class="col-sm-4">
+                            <div class="form-group row-md-4">
+                                <b>Kategori</b>
+                                <div class="col-md-4">
                                     <input class="form-check-input" type="radio" value="Online" name="cats"
                                         required="required">
                                     Online
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-md-4">
                                     <input class="form-check-input" type="radio" value="Offline" name="cats"
                                         required="required">
                                     Offline
@@ -83,56 +83,60 @@
                 </div>
 
                 <!-- Right form -->
-                <div class="col-sm-auto card-temp">
+                <div class="col-md-auto card-temp">
                     <div class="card">
                         <div class="card-header rform"></div>
                         <div class="card-body">
-                            <div class="form-group row-sm-4">
-                                Tanggal
+                            <div class="form-group row-md-4">
+                                <b>Tanggal</b>
                                 <input type="date" class="form-control" name="tgll" required="required">
                             </div>
 
-                            <div class="form-group row-sm-auto">
-                                Jam Mulai
-                                <input type="time" class="form-control col-sm-auto" name="timest" required="required">
-                                Jam Berakhir
-                                <input type="time" class="form-control col-sm-auto" name="timend" required="required">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <b>Jam Mulai</b>
+                                    <input type="time" class="form-control" name="timest" required="required">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <b>Jam Berakhir</b>
+                                    <input type="time" class="form-control" name="timend" required="required">
+                                </div>
                             </div>
 
-                            <div class="form-group row-sm-4">
-                                Tempat
+                            <div class="form-group row-md-4">
+                                <b>Tempat</b>
                                 <input type="text" class="form-control" name="place" required="required">
                             </div>
 
-                            <div class="form-group row-sm-4">
-                                Harga
+                            <div class="form-group row-md-4">
+                                <b>Harga</b>
                                 <input type="number" class="form-control" name="price" required="required" value=0>
                             </div>
 
-                            <div class="form-group row-sm-4">
-                                Benefit
+                            <div class="form-group row-md-4">
+                                <b>Benefit</b>
                                 <div class="form-check">
                                     <div class="col-md-auto">
-                                        <input class="form-check-input" type="checkbox" name="benefits[]" value="Snacks" \
-                                            id="benefit_check1">
+                                        <input class="form-check-input" type="checkbox" name="benefits[]" value="Snacks"
+                                            \ id="benefit_check1">
                                         Snacks
                                         <br />
                                     </div>
                                     <div class="col-md-auto">
-                                        <input class="form-check-input" type="checkbox" name="benefits[]" value="Sertifikat" \
-                                            id="benefit_check2">
+                                        <input class="form-check-input" type="checkbox" name="benefits[]"
+                                            value="Sertifikat" \ id="benefit_check2">
                                         Sertifikat
                                         <br />
                                     </div>
                                     <div class="col-md-auto">
-                                        <input class="form-check-input" type="checkbox" name="benefits[]" value="Souvenir" \
-                                            id="benefit_check3">
+                                        <input class="form-check-input" type="checkbox" name="benefits[]"
+                                            value="Souvenir" \ id="benefit_check3">
                                         Souvenir
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col justify-content-right align-content-right">
+                            <div class="col text-right">
                                 <input type="reset" class="btn btn-danger" value="Cancel"></input>
                                 <input type="submit" class="btn btn-primary" value="Submit" name="submit_form"></input>
                             </div>

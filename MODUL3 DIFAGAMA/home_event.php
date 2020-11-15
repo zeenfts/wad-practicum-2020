@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/home_event.css">
 </head>
 
@@ -60,22 +61,24 @@
         // echo $res_row;
         $content_hm = '';
         
-        if($res_row==0){
-            $content_hm = '<h6>No Events Found</h6>';
+        if(empty($res_row)){
+            $content_hm = '<h6 style="padding-top:10em">No Events Found</h6>';
         }else{
             foreach ($res_row as $row) {
                 $content_hm .= '
                 <div class="col-md-2">
-                    <div class="card" style="height: auto; box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;">
-                        <img src="./assets/img/'.$row['gambar'].'" class="card-img-top" alt="..." style="width: 100%;max-height: 10rem">
+                    <div class="card" style="height: 33rem; width: 14.3em; box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;">
+                        <img src="./assets/img/'.$row['gambar'].'" class="card-img-top" alt="..." style="width: 100%;height: 10rem">
                         <div class="card-body">
                             <h4>'.$row['name'].'</h4>
-                            <p><i class="fa" style="font-size:25px; color: orange">&#xf073;</i>'.$row['tanggal'].'</p>
-                            <p><i class="fa" style="font-size:25px; color: orange">&#xf041;</i>'.$row['tempat'].'</p>
-                            <p>Kategori : Event '.$row['kategori'].'</p>
                         </div>
-                        <div class="card-footer">
-                            <a type="button" class="btn btn-primary" href="event_details.php?id='.$row['id'].'">Detail</a>
+                        <div class="card-text text-left" style="padding-left:25px">
+                            <p><i class="fa" style="font-size:15px; color: rgb(236, 150, 67); padding-right:1em">&#xf073;</i>'.$row['tanggal'].'</p>
+                            <p><i class="fa" style="font-size:18px; color: rgb(236, 150, 67); padding-right:1em">&#xf041;</i>'.$row['tempat'].'</p>
+                            <p style="font-size:15.5px;">Kategori : Event '.$row['kategori'].'</p>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a type="button" class="btn btn-primary btn-block" href="event_details.php?id='.$row['id'].'">Detail</a>
                         </div>
                     </div>
                 </div>

@@ -66,7 +66,7 @@
 
     function del_data($key_item){
         global $conn;
-        $rs_row = mysqli_query($conn, "DELETE FROM events_tb WHERE id = '$key_item'");
+        query("DELETE FROM events_tb WHERE id = '$key_item'");
         $eff_rw = mysqli_affected_rows($conn);
         
         if($eff_rw>0) {
@@ -101,7 +101,7 @@
         $tempat = $_POST['place'];
         $bnft = $_POST['benefits'];
         if($bnft==0){
-            $benefit='-';
+            $benefit='Nothing';
         }else{
             $benefit = implode(", ", $bnft);
         }
