@@ -58,6 +58,8 @@
 
         $res_row = query("SELECT * FROM events_tb");
         // echo $res_row;
+        $content_hm = '';
+        
         if($res_row==0){
             $content_hm = '<h6>No Events Found</h6>';
         }else{

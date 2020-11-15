@@ -56,7 +56,7 @@
 
                             <div class="form-group row-sm-4">
                                 Deskripsi
-                                <textarea class="form-control" name="deskripsi" rows="10"
+                                <textarea class="form-control" name="deskripsi" rows="9"
                                     required="required"></textarea>
                             </div>
 
