@@ -136,8 +136,7 @@
                                 </div>
                             </div>
 
-                            <!-- bug when use text-right (can't insert more than 1 row to db) -->
-                            <div class="col">
+                            <div class="col text-right">
                                 <input type="reset" class="btn btn-danger" value="Cancel">
                                 <input type="submit" class="btn btn-primary" value="Submit" name="submit_form">
                             </div>

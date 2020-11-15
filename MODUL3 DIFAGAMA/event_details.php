@@ -54,37 +54,52 @@
                 <img src="./assets/img/<?= $row['gambar']?>" class="card-img-top" alt="..."
                     style="width: 100%;max-height: 20rem">
                 <div class="card-header"></div>
-                <div class="card-body">
+                <div class="card-body" style="padding:35px;">
                     <h4><b><?= $row['name']?></b></h4><br>
                     <h6><b>Deskripsi</b></h6>
                     <p><?= $row['deskripsi']?></p>
-                    <h6><b>Informasi Event</b></h6>
-                    <p><i class="fa"
-                            style="font-size:18px; color: rgb(236, 150, 67); padding-right:1em">&#xf073;</i><?= $row['tanggal']?>
-                    </p>
-                    <p><i class="fa"
-                            style="font-size:22px; color: rgb(236, 150, 67); padding-right:1em">&#xf041;</i><?= $row['tempat']?>
-                    </p>
-                    <p><i class="fa"
-                            style="font-size:18px; color: rgb(236, 150, 67); padding-right:1em">&#xf017;</i><?= $row['mulai']?>
-                        -
-                        <?= $row['berakhir']?></p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><b>Informasi Event</b></h6>
+                            <p><i class="fa"
+                                    style="font-size:18px; color: rgb(236, 150, 67); padding-right:1em">&#xf073;</i><?= $row['tanggal']?>
+                            </p>
+                            <p><i class="fa"
+                                    style="font-size:22px; color: rgb(236, 150, 67); padding-right:1em">&#xf041;</i><?= $row['tempat']?>
+                            </p>
+                            <p><i class="fa"
+                                    style="font-size:18px; color: rgb(236, 150, 67); padding-right:1em">&#xf017;</i><?= $row['mulai']?>
+                                -
+                                <?= $row['berakhir']?></p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h6><b>Benefit</b></h6>
+                            <p>&#x2022; <?= $row['benefit']?></p>
+                        </div>
+                    </div>
+
                     <p><b>Kategori</b>: <?= $row['kategori']?></p>
-                    <h6><b>HTM: Rp <?= $row['harga']?></b></h6>
-                    <h6><b>Benefit</b></h6>
-                    <p>&#x2022; <?= $row['benefit']?></p>
+                    <?php
+                        if($row['harga']==0){
+                            echo '<h6 style="color:green;"><b><i>FREE</i></b></h6>';
+                        }else{
+                            echo '<h6><b>HTM Rp '.$row['harga'].',-</b></h6>';
+                        }
+                    ?>
                 </div>
 
                 <div class="card-footer text-center">
                     <div class="row">
                         <div class="col-md-6 text-right">
-                            <input type="submit" class="btn btn-primary" name="edit_event" value="Edit" data-toggle="modal"
-                                data-target="#edit_data_modal" style="width:10em;">
+                            <input type="submit" class="btn btn-primary" name="edit_event" value="Edit"
+                                data-toggle="modal" data-target="#edit_data_modal" style="width:10em;">
                         </div>
 
                         <div class="col-md-6 text-left">
-                            <form action="home_event.php" method="post">
-                                <input type="submit" class="btn btn-danger" name="del_event" value="Delete" style="width:10em;">
+                            <form action="home_event.php" method="post" onsubmit="return confirm('Are you sure to delete this event?');">
+                                <input type="submit" class="btn btn-danger" name="del_event" value="Delete"
+                                    style="width:10em;">
                             </form>
                         </div>
                     </div>
@@ -115,7 +130,7 @@
                                         <div class="form-group row-md-4">
                                             <b>Name</b>
                                             <input type="text" class="form-control" name="namaa"
-                                                value=<?= $row['name']?>>
+                                                value="<?= $row['name']?>">
                                         </div>
                                         <div class="form-group row-md-4">
                                             <b>Deskripsi</b>
@@ -183,7 +198,7 @@
                                         <div class="form-group row-md-4">
                                             <b>Tempat</b>
                                             <input type="text" class="form-control" name="place"
-                                                value=<?= $row['tempat']?>>
+                                                value="<?= $row['tempat']?>">
                                         </div>
 
                                         <div class="form-group row-md-4">

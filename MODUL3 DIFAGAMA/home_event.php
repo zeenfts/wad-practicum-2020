@@ -78,7 +78,7 @@
                             <p style="font-size:15.5px;">Kategori : Event '.$row['kategori'].'</p>
                         </div>
                         <div class="card-footer text-right">
-                            <a type="button" class="btn btn-primary btn-block" href="event_details.php?id='.$row['id'].'">Detail</a>
+                            <a type="button" class="btn btn-primary" href="event_details.php?id='.$row['id'].'" style="width:6em;">Detail</a>
                         </div>
                     </div>
                 </div>

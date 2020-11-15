@@ -53,7 +53,7 @@
         if($eff_rw>0) {
             echo "
             <script>
-                alert('Success ad an event');
+                alert('Success add an event');
                 document.location.href = 'home_event.php';
             </script>
         ";
@@ -133,7 +133,7 @@
         } else {
             echo "
             <script>
-                alert('Event has not updated');
+                alert('Event not updated!!');
                 document.location.href = 'home_event.php';
             </script>
         ";
