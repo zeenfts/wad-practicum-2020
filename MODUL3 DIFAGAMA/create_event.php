@@ -118,27 +118,28 @@
                                 <div class="form-check">
                                     <div class="col-md-auto">
                                         <input class="form-check-input" type="checkbox" name="benefits[]" value="Snacks"
-                                            \ id="benefit_check1">
+                                            id="benefit_check1">
                                         Snacks
                                         <br />
                                     </div>
                                     <div class="col-md-auto">
                                         <input class="form-check-input" type="checkbox" name="benefits[]"
-                                            value="Sertifikat" \ id="benefit_check2">
+                                            value="Sertifikat" id="benefit_check2">
                                         Sertifikat
                                         <br />
                                     </div>
                                     <div class="col-md-auto">
                                         <input class="form-check-input" type="checkbox" name="benefits[]"
-                                            value="Souvenir" \ id="benefit_check3">
+                                            value="Souvenir" id="benefit_check3">
                                         Souvenir
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col text-right">
-                                <input type="reset" class="btn btn-danger" value="Cancel"></input>
-                                <input type="submit" class="btn btn-primary" value="Submit" name="submit_form"></input>
+                            <!-- bug when use text-right (can't insert more than 1 row to db) -->
+                            <div class="col">
+                                <input type="reset" class="btn btn-danger" value="Cancel">
+                                <input type="submit" class="btn btn-primary" value="Submit" name="submit_form">
                             </div>
                         </div>
                     </div>

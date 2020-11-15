@@ -79,12 +79,12 @@
                     <div class="row">
                         <div class="col-md-6 text-right">
                             <input type="submit" class="btn btn-primary" name="edit_event" value="Edit" data-toggle="modal"
-                                data-target="#edit_data_modal"></input>
+                                data-target="#edit_data_modal" style="width:10em;">
                         </div>
 
                         <div class="col-md-6 text-left">
                             <form action="home_event.php" method="post">
-                                <input type="submit" class="btn btn-danger" name="del_event" value="Delete" size="10"></input>
+                                <input type="submit" class="btn btn-danger" name="del_event" value="Delete" style="width:10em;">
                             </form>
                         </div>
                     </div>

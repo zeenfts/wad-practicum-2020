@@ -20,11 +20,13 @@ nav{
     padding: 10px;
 }
 
-.card{
-    width:25rem;
+/* .card{
+    width:50rem; 
+    height: auto; 
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
     margin: auto;
     padding: 0;
-}
+} */
 
 .card-body{
     padding: 15px;

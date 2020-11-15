@@ -19,7 +19,10 @@
 
     function add_data($data){
         global $conn;
-        $id_num = rand(10000,9999999999);
+        $rs_row = query("SELECT * FROM events_tb");
+
+
+        $id_num = date("d").date("H").strval(rand(100,999)).date("i");
         $nama = $data['namaa'];
         $deskripsi = $data['deskripsi'];
         $gambar = $_FILES['upload_img']['name'];
@@ -33,7 +36,7 @@
         $tempat = $data['place'];
         $bnft = $_POST['benefits'];
         if($bnft==0){
-            $benefit='-';
+            $benefit='Nothing';
         }else{
             $benefit = implode(", ", $bnft);
         }
@@ -41,7 +44,7 @@
         move_uploaded_file($_FILES["upload_img"]["tmp_name"], "./assets/img/".$gambar);
         // $query = "INSERT INTO events_tb (`name`, `deskripsi`, `gambar`, `kategori`, `tanggal`, `mulai`, `berakhir`, `tempat`, `benefit`, `harga`) \
         //             VALUES ('$nama', '$deskripsi', '$gambar', '$kategori', '$tanggal', '$mulai', '$berakhir', '$tempat', '$benefit', '$harga')";
-        $query = "INSERT INTO events_tb VALUES ('$id_num', '$nama', '$deskripsi', '$gambar', '$kategori', 
+        $query = "INSERT INTO events_tb VALUES('$id_num', '$nama', '$deskripsi', '$gambar', '$kategori', 
         '$tanggal', '$mulai', '$berakhir', '$tempat', '$benefit', '$harga')";
         
         mysqli_query($conn, $query);
