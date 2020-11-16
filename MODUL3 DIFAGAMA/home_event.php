@@ -37,7 +37,7 @@
 
     <!-- PHP Section -->
     <?php
-        require 'db_conn_ev.php';
+        require 'conn_ev.php';
         $submit_selected = isset($_POST["submit_form"]);
         $delete_selected = isset($_POST["del_event"]);
         $edit_selected = isset($_POST["save_edit"]);
