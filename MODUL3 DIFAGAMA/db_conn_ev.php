@@ -1,5 +1,5 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "", "wad_modul2_difagama");
+    $conn = mysqli_connect("localhost", "root", "", "wad_modul3_difagama");
 
     if(!$conn) {
 		die("Can't connect bruh : ".mysql_connect_error());
@@ -44,7 +44,7 @@
         move_uploaded_file($_FILES["upload_img"]["tmp_name"], "./assets/img/".$gambar);
         // $query = "INSERT INTO events_tb (`name`, `deskripsi`, `gambar`, `kategori`, `tanggal`, `mulai`, `berakhir`, `tempat`, `benefit`, `harga`) \
         //             VALUES ('$nama', '$deskripsi', '$gambar', '$kategori', '$tanggal', '$mulai', '$berakhir', '$tempat', '$benefit', '$harga')";
-        $query = "INSERT INTO events VALUES('$id_num', '$nama', '$deskripsi', '$gambar', '$kategori', 
+        $query = "INSERT INTO events_tb VALUES('$id_num', '$nama', '$deskripsi', '$gambar', '$kategori', 
         '$tanggal', '$mulai', '$berakhir', '$tempat', '$benefit', '$harga')";
         
         mysqli_query($conn, $query);
