@@ -57,7 +57,7 @@
             edit_data($id_num);
         }
 
-        $res_row = query("SELECT * FORM events_tb");
+        $res_row = query("SELECT * FROM events_tb");
         // echo $res_row;
         $content_hm = '';
         
