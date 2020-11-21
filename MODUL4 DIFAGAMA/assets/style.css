@@ -1,0 +1,39 @@
+body,
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav{
+    background-color: lightblue;
+}
+
+.container-fluid{
+    padding: 70px 25px 10px 25px;
+} 
+
+.container-fluid h5, .container-fluid h7{
+    text-align: center;
+    color: rgb(56, 201, 153);
+}
+
+.card-temp{
+    padding: 30px;
+}
+
+.card{
+    width:32em;
+    margin: auto;
+    padding: 15px 35px 5px 35px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+    -o-box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;
+}
+
+.card-header, .card-footer{
+    background-color: white;
+}
+
+.card-body{
+    padding: 15px 55px 0 55px;
+}
