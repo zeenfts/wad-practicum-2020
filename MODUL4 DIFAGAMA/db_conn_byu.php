@@ -1,5 +1,6 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "", "wad_modul4"); 
+    $conn = mysqli_connect("localhost", "root", "", "wad_modul4");
+    $eff_rw = -1; 
 
     if(!$conn) {
 		die("Can't connect bruh : ".mysql_connect_error());

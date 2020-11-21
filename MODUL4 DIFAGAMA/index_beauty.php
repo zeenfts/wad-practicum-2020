@@ -45,6 +45,12 @@
         </div>
     </nav>
 
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_byu.php';
+        $res_row = query("SELECT * FROM prod_catalog");
+    ?>
+
     <!-- Content -->
     <div class="container-fluid">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -64,18 +70,24 @@
                 <div class="card-body card-inside-outer">
                     <!-- Inner Card -->
                     <div class="row justify-content-center align-content-center">
+                <?php 
+                    if(empty($res_row)){
+                            
+                    }else{
+                        foreach ($res_row as $row) {
+                ?>
                         <div class="col-md-4 card-inside-outer">
                             <div class="card card-inside text-center">
-                                <img src="./assets/img/'.$row['gambar'].'" class="card-img-top" alt="..."
-                                    style="width: 100%;height: 10rem">
+                                <img src="<?= $row['gambar']?>" class="card-img-top" alt="..."
+                                    style="width: 100%;height: 12rem">
                                 <div class="card-body h4">
-                                    <b>'.$row['name'].'</b>
+                                    <b><?= $row['nama_brg']?></b>
                                 </div>
-                                <div class="card-text">
-                                    <p>deskripsi dari produknya</p>
+                                <div class="card-text card-inside-tx">
+                                    <p><?= $row['deskripsi']?></p>
                                 </div>
                                 <div class="card-footer">
-                                    <b>Harga</b>
+                                    <b>Rp <?= $row['harga_brg']?></b>
                                 </div>
                                 <div class="card-footer">
                                     <a type="button" class="btn btn-primary"
@@ -83,47 +95,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-4 card-inside-outer">
-                            <div class="card card-inside text-center">
-                                <img src="./assets/img/'.$row['gambar'].'" class="card-img-top" alt="..."
-                                    style="width: 100%;height: 10rem">
-                                <div class="card-body h4">
-                                    <b>'.$row['name'].'</b>
-                                </div>
-                                <div class="card-text">
-                                    <p>deskripsi dari produknya</p>
-                                </div>
-                                <div class="card-footer">
-                                    <b>Harga</b>
-                                </div>
-                                <div class="card-footer">
-                                    <a type="button" class="btn btn-primary"
-                                        href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 card-inside-outer">
-                            <div class="card card-inside text-center">
-                                <img src="./assets/img/'.$row['gambar'].'" class="card-img-top" alt="..."
-                                    style="width: 100%;height: 10rem">
-                                <div class="card-body h4">
-                                    <b>'.$row['name'].'</b>
-                                </div>
-                                <div class="card-text">
-                                    <p>deskripsi dari produknya</p>
-                                </div>
-                                <div class="card-footer">
-                                    <b>Harga</b>
-                                </div>
-                                <div class="card-footer">
-                                    <a type="button" class="btn btn-primary"
-                                        href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
-                                </div>
-                            </div>
-                        </div>
-
+                <?php
+                        }
+                    }
+                ?>
                     </div>
                 </div>
             </div>
@@ -139,7 +114,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
-    <script>
+    <!-- <script>
     $(function() {
         TriggerAlertClose();
     });
@@ -151,7 +126,7 @@
             });
         }, 5000);
     }
-    </script>
+    </script> -->
 </body>
 
 </html>

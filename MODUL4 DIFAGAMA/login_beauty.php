@@ -39,47 +39,39 @@
         require 'db_conn_byu.php';
 
         $notif_alert='';
-        if(isset($_POST["regis_form"])){
-            $eml = $_POST["emaill"];
-            $eff_rw = add_data($_POST, query("SELECT `id` FROM `user` WHERE `email` = '$eml'"));
+        if(isset($_POST["login_form"])){
+            $email_uname = $_POST["emaill"];
+            $pass = $_POST["sandi1"];
+            $user = query("SELECT * FROM `user` WHERE email='$email_uname'")[0];
+            $user_id = $user['id'];
             
-            if($eff_rw > 0){
+            if(password_verify($pass, $user['password'])){
                 $notif_alert =  '
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                Berhasil registrasi!
+                    Berhasil login!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>';
+                header("Refresh:5;url=index_beauty.php");
             }else{
                 $notif_alert =  '
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                Gagal registrasi!
+                    Gagal login! (periksa kembali mungkin ada data yang tidak sesuai)
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>';
-                header("Location: register_beauty.php");
+                // header("Location: register_beauty.php");
             }
         }
-
-        // session_start();
-        // $sign = '
-        // <li class="nav-item"><br>
-        //     <a class="nav-link" data-toggle="modal" data-target="#form_sign_in" href="#">Sign In</a><br>
-        // </li><br>
-        // <li class="nav-item"><br>
-        //     <button class="btn class btn btn-primary" data-toggle="modal" data-target="#exampleModal">Join for Free</button><br>
-        // </li>
-        // ';
-        // $_SESSION['sign'] = $sign;
     ?>
 
     <!-- Content -->
     <div class="container-fluid">
         <?= $notif_alert?>
 
-        <form action="index_beauty.php" method="post">
+        <form action="" method="post">
             <div class="row justify-content-center align-content-center">
                 <div class="col-md-auto card-temp">
                     <div class="card">
@@ -135,6 +127,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <?php exit;?>
 </body>
 
 </html>

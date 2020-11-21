@@ -33,9 +33,48 @@
         </div>
     </nav>
 
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_byu.php';
+
+        $notif_alert='';
+
+        if(isset($_POST["regis_form"])){
+            $eml = $_POST["emaill"];
+            $eff_rw = add_data($_POST, '');
+        }
+    ?>
+
     <!-- Content -->
     <div class="container-fluid">
-        <form action="login_beauty.php" method="post">
+        <?php
+        if($eff_rw > 0){?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Berhasil registrasi!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php
+        header("Refresh:5;url=login_beauty.php");
+        // echo 'You\'ll be redirected in about 5 secs. ';
+        // echo 'If not, click <a href="wherever.php">here</a>.';
+
+        $row_usr = query("SELECT `id` FROM `user` WHERE `email` = '$eml'");
+        
+        }else if($eff_rw == 0){?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Gagal registrasi!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php
+                // header("Location: register_beauty.php");
+        }
+        ?>
+        <!-- <?= $notif_alert?> -->
+        <form action="" method="post">
             <div class="row justify-content-center align-content-center">
                 <div class="col-md-auto card-temp">
                     <div class="card">
@@ -100,6 +139,7 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
     <script src="./assets/scripts.js"></script>
+    <?php exit;?>
 </body>
 
 </html>
