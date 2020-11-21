@@ -94,8 +94,10 @@
 
                         <div class="card-footer text-center">
                             <input type="submit" class="btn btn-primary btn-block" value="Submit" name="profile_form">
-                            <input type="reset" class="btn btn-light btn-block" value="Cancel"
-                                onmouseover="this.style.color='red';" onmouseout="this.style.color='';">
+                            <!-- <input type="submit" class="btn btn-light btn-block" value="Cancel"
+                                onmouseover="this.style.color='red';" onmouseout="this.style.color='';"> -->
+                            <a type="button" class="btn btn-light btn-block" href="index_beauty.php"
+                                onmouseover="this.style.color='red';" onmouseout="this.style.color='';">Cancel</a>
                             </a>
                         </div>
                     </div>

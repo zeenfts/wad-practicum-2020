@@ -41,3 +41,16 @@ nav{
 .hover-t:hover {
 	text-decoration: underline;
 }
+
+.cart-table{
+    padding: 170px 230px 15px 230px;
+}
+
+table{
+    background-color: whitesmoke;
+}
+
+table thead{
+    background-color: rgb(62, 55, 54);
+    color: whitesmoke;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand navbar-light fixed-top">
@@ -27,19 +29,59 @@
                         <i class="fa fa-2x" style="color: rgb(180, 10, 67); padding-right:.3em">&#xf07a;</i>
                     </a>
                 </li>
-                <li class="nav-item dropdown active"> 
-                    <a class="nav-link dropdown-toggle" href="" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="" id="user_dropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         Selamat Datang, <span class="text-primary">nama</span>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="user_dropdown">
                         <a class="dropdown-item" href="profile_beauty.php">Profile</a>
-                        <a class="dropdown-item" href="login_beauty.php" onmouseover="this.style.color='red';" onmouseout="this.style.color='';">Logout</a>
+                        <a class="dropdown-item" href="login_beauty.php" onmouseover="this.style.color='red';"
+                            onmouseout="this.style.color='';">Logout</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <!-- Cart List -->
+    <div class="container-fluid cart-table">
+        <div class="row justify-content-center align-content-center">
+            <table class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Barang</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>coba</td>
+                        <td>Rp 333</td>
+                        <td>
+                            <form action="" method="post"
+                                onsubmit="return confirm('Are you sure to delete this event?');">
+                                <input type="submit" class="btn btn-danger" name="del_event" value="Hapus"
+                                    style="width:10em;">
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th scope="row">Total</th>
+                        <td></td>
+                        <td>Rp 34344</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -51,4 +93,5 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
 </body>
+
 </html>
