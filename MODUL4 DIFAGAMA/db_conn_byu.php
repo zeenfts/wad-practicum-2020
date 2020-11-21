@@ -29,7 +29,7 @@
         $harga = 0;
         $query = '';
 
-        if(isset($data['daftar_form'])){
+        if(isset($data['regis_form'])){
             $id_num = date("d").strval(rand(100,999)).date("H").date("i");
             $nama = $data['namaa'];
             $email = $data['emaill'];

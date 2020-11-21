@@ -37,3 +37,7 @@ nav{
 .card-body{
     padding: 15px 55px 0 55px;
 }
+
+.hover-t:hover {
+	text-decoration: underline;
+}

@@ -53,7 +53,7 @@
                             <div class="form-group row-md-4">
                                 E-mail
                                 <input type="email" class="form-control" name="emaill"
-                                    placeholder="Masukkan Alamat E-mail">
+                                    placeholder="Masukkan Alamat E-mail" required="required">
                             </div>
 
                             <div class="form-group row-md-4">
@@ -64,13 +64,13 @@
 
                             <div class="form-group row-md-4">
                                 Kata Sandi
-                                <input type="password" class="form-control" name="sandi1" placeholder="Buat Kata Sandi">
+                                <input type="password" class="form-control" name="sandi1" placeholder="Buat Kata Sandi" required="required">
                             </div>
 
                             <div class="form-group row-md-4">
                                 Konfirmasi Kata Sandi
                                 <input type="password" class="form-control" name="sandi2"
-                                    placeholder="Konfirmasi Kata Sandi">
+                                    placeholder="Konfirmasi Kata Sandi" required="required">
                             </div>
                         </div>
                         <div class="card-footer text-center">
@@ -78,7 +78,7 @@
                                 style="width:10em;">
                             <input type="reset" class="btn btn-light" value="Clear"
                                 onmouseover="this.style.color='red';" onmouseout="this.style.color='';">
-                            <a class="btn" href="login_beauty.php">
+                            <a class="btn hover-t" href="login_beauty.php">
                                 Sudah punya akun? <span class="text-primary">Login</span>
                             </a>
                         </div>
