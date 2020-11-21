@@ -20,7 +20,7 @@
 
     function add_data($data, $user_id){
         global $conn;
-        $rs_row = query("SELECT * FROM events_tb");
+        // $rs_row = query("SELECT * FROM events_tb");
 
         $id_num = 0;
         $nama = '';
@@ -39,11 +39,15 @@
             $hash_pass = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT INTO `user` VALUES ('$id_num', '$nama', '$email', '$handphone', '$hash_pass')";
 
-        }else if(isset($data['add_cart1']) or isset($data['add_cart2']) or isset($data['add_cart3'])){
+        }else if(isset($_GET['id'])){
+            $id_brg = $_GET['id'];
             $id_num = date("d").date("H").date("i").strval(rand(100,999));
-            $nama_barang = $data['brg_name'];
-            $harga = $data['brg_price'];
-            $query = "INSERT INTO `cart` VALUES ('$id_num', '$user_id', '$nama', '$email', '$handphone', '$hash_pass')";
+            $rs_row = query("SELECT * FROM `prod_catalog` WHERE `nama_brg`='$id_brg'")[0];
+            $nama_barang = $rs_row['nama_brg'];
+            $harga = $rs_row['harga_brg'];
+            // $nama_barang = $data['brg_name'];
+            // $harga = $data['brg_price'];
+            $query = "INSERT INTO `cart` VALUES ('$id_num', '$user_id', '$nama_barang', '$harga')";
 
         }else{
 

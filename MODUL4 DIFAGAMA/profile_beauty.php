@@ -13,6 +13,19 @@
 </head>
 
 <body>
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_byu.php';
+        session_start();
+        $usr_name = '';
+
+        if(!empty($_SESSION['log_email'])){
+            $log_email = $_SESSION['log_email'];
+            $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
+            $usr_name = $row_usr['nama'];
+        }
+    ?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand navbar-light fixed-top">
         <a class="navbar-brand mb-0 h1" href="">EAD Beauty</a>
@@ -32,7 +45,7 @@
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="" id="user_dropdown" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Selamat Datang, <span class="text-primary">nama</span>
+                        Selamat Datang, <span class="text-primary"><?= $usr_name ?></span>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="user_dropdown">
@@ -53,6 +66,10 @@
                     <div class="card">
                         <div class="card-header text-center h3">
                             Profile
+                            <a type="button" class="btn btn-light close" href="index_beauty.php"
+                            onmouseover="this.style.color='red';" onmouseout="this.style.color='';">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="form-group row-md-4">
@@ -102,7 +119,6 @@
                                 onmouseover="this.style.color='red';" onmouseout="this.style.color='';"> -->
                             <a type="button" class="btn btn-light btn-block" href="index_beauty.php"
                                 onmouseover="this.style.color='red';" onmouseout="this.style.color='';">Cancel</a>
-                            </a>
                         </div>
                     </div>
                 </div>

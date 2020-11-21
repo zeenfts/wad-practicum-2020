@@ -40,11 +40,22 @@
         session_start();
 
         $notif_alert='';
+
+        if (!empty($_COOKIE['log_rem_me'])) {
+            $email = $_COOKIE['log_email_user'];
+            $sandi = $_COOKIE['log_pass_user'];
+            $rem_me = $_COOKIE['log_rem_me'];
+        } else {
+            $email = null;
+            $sandi = null;
+            $rem_me = null;
+        }
+
+        // Login
         if(isset($_POST["login_form"])){
             $email_uname = $_POST["emaill"];
             $pass = $_POST["sandi1"];
             $user = query("SELECT * FROM `user` WHERE email='$email_uname'")[0];
-            $user_id = $user['id'];
             
             if(password_verify($pass, $user['password'])){
                 $notif_alert =  '
@@ -54,12 +65,25 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>';
+
                 $_SESSION['log_email'] = $user['email'];
-                header("Refresh:5;url=index_beauty.php");
-                
-                if(isset($_SESSION['loginTime'])){
-                    unset($_SESSION['loginTime']);
+                $_SESSION['log_user_id'] = $user['id'];
+
+                if (is_null($_POST['rem_me'])) {
+                    setcookie('log_email_user', '', 0, '/');
+                    setcookie('log_pass_user', '', 0, '/');
+                    setcookie('log_rem_me', '', 0, '/');
+                } else {
+                    setcookie("log_email_user", $_POST['emaill'], time()+ 86400,'/');
+                    setcookie("log_pass_user", $_POST['sandi1'], time()+ 86400,'/');
+                    setcookie("log_rem_me", "checked", time()+ 86400,'/');
                 }
+
+                header("Refresh:5;url=index_beauty.php");
+
+                // if(isset($_SESSION['loginTime'])){
+                //     unset($_SESSION['loginTime']);
+                // }
             }else{
                 $notif_alert =  '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -85,28 +109,15 @@
                             Login
                         </div>
                         <div class="card-body">
-                        <?php
-                            if(!isset($_POST['rem_me'])){
-                        ?>
                             <div class="form-group row-md-4">
                                 E-mail
-                                <input type="email" class="form-control" name="emaill"
+                                <input type="email" class="form-control" name="emaill" value="<?= $email?>"
                                     placeholder="Masukkan Alamat E-mail" required="required">
                             </div>
-                        <?php
-                            }else{
-                        ?>
-                            <div class="form-group row-md-4">
-                                E-mail
-                                <input type="email" class="form-control" name="emaill" value="<?= $_SESSION['reg_email']?>"
-                                    placeholder="Masukkan Alamat E-mail" required="required">
-                            </div>
-                        <?php
-                            }
-                        ?>
+
                             <div class="form-group row-md-4">
                                 Kata Sandi
-                                <input type="password" class="form-control" name="sandi1"
+                                <input type="password" class="form-control" name="sandi1" value="<?= $sandi?>"
                                     placeholder="Masukkan Kata Sandi" required="required">
                             </div>
 
@@ -114,13 +125,12 @@
                                 <div class="form-check">
                                     <div class="col-md-auto">
                                         <input class="form-check-input" type="checkbox" name="rem_me"
-                                            value="Remember Me" id="benefit_check1">
+                                            value="Remember Me" id="rem_me" <?= $rem_me?>>
                                         Remember Me
                                         <br />
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="card-footer text-center">
                             <input type="submit" class="btn btn-primary" value="Login" name="login_form"

@@ -47,15 +47,16 @@
 
     <!-- Content -->
     <div class="container-fluid">
-        <?php
-        if($eff_rw > 0){?>
+    <?php
+        if($eff_rw > 0){
+    ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             Berhasil registrasi!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <?php
+    <?php
         header("Refresh:5;url=login_beauty.php");
         // echo 'You\'ll be redirected in about 5 secs. ';
         // echo 'If not, click <a href="wherever.php">here</a>.';
@@ -64,17 +65,18 @@
         session_start();
         $_SESSION['reg_email'] = $row_usr['email'];
         
-        }else if($eff_rw == 0){?>
+        }else if($eff_rw == 0){
+    ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             Gagal registrasi!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <?php
+    <?php
                 // header("Location: register_beauty.php");
         }
-        ?>
+    ?>
         <!-- <?= $notif_alert?> -->
         <form action="" method="post">
             <div class="row justify-content-center align-content-center">

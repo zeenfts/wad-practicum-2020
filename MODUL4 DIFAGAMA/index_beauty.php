@@ -18,13 +18,17 @@
         require 'db_conn_byu.php';
         session_start();
         $res_row = query("SELECT * FROM prod_catalog");
+        $usr_name = '';
         $usr_id = '';
 
         if(!empty($_SESSION['log_email'])){
             $log_email = $_SESSION['log_email'];
             $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
             $usr_name = $row_usr['nama'];
+            $usr_id = $row_usr['id'];
         }
+
+        $eff_rw = add_data($_GET, $usr_id);
     ?>
 
     <!-- Navbar -->
@@ -61,47 +65,66 @@
 
     <!-- Content -->
     <div class="container-fluid">
+    <?php
+        if($eff_rw > 0){
+    ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            This is a success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
-            like.
+            Berhasil memasukkan barang ke Keranjang!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+    <?php
+        }else if($eff_rw == 0){
+    ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Barang tidak berhasil dimasukkan ke Keranjang!!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php  
+        }
+    ?>
         <!-- Outer Card -->
         <div class="row justify-content-center align-content-center">
             <div class="card card-outside">
                 <div class="card-header text-center card-h-custom">
                     <h3>WAD Beauty</h3>
-                    <p>Tersedia Skin Care Korea dengan Brand yang cukup ternama (Korean Haul)</p>
+                    <p>Tersedia Skin Care Populer Korea dengan Brand yang cukup ternama (Korean Haul)</p>
                 </div>
                 <div class="card-body card-inside-outer">
                     <!-- Inner Card -->
                     <div class="row justify-content-center align-content-center">
                 <?php 
                     if(empty($res_row)){
-                            
+                        
                     }else{
                         foreach ($res_row as $row) {
                 ?>
                         <div class="col-md-4 card-inside-outer">
+                            <!-- <form action="" method="post" onsubmit=""> -->
                             <div class="card card-inside text-center">
                                 <img src="<?= $row['gambar']?>" class="card-img-top" alt="..."
                                     style="width: 100%;height: 12rem">
-                                <div class="card-body h4">
+                                <div class="card-body h4" name='brg_name'>
                                     <b><?= $row['nama_brg']?></b>
                                 </div>
-                                <div class="card-text card-inside-tx">
+                                <div class="card-text card-inside-tx" name='brg_desc'>
                                     <p><?= $row['deskripsi']?></p>
                                 </div>
-                                <div class="card-footer">
+                                <div class="card-footer" name='brg_price'>
                                     <b>Rp <?= $row['harga_brg']?></b>
                                 </div>
                                 <div class="card-footer">
-                                    <a type="button" class="btn btn-primary"
-                                        href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
+                                    
+                                        <!-- <a type="button" class="btn btn-primary"
+                                            href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a> -->
+                                        <!-- <input type="submit" class="btn btn-primary" name="add_product" value="Tambah ke Keranjang"> -->
+                                        <a type="button" class="btn btn-primary" href="?id=<?= $row['nama_brg']?>" style="width:6em;">Detail</a>
                                 </div>
                             </div>
+                        <!-- </form> -->
                         </div>
                 <?php
                         }

@@ -13,6 +13,19 @@
 </head>
 
 <body>
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_byu.php';
+        session_start();
+        $usr_name = '';
+
+        if(!empty($_SESSION['log_email'])){
+            $log_email = $_SESSION['log_email'];
+            $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
+            $usr_name = $row_usr['nama'];
+        }
+    ?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand navbar-light fixed-top">
         <a class="navbar-brand mb-0 h1" href="">EAD Beauty</a>
@@ -32,7 +45,7 @@
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="" id="user_dropdown" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Selamat Datang, <span class="text-primary">nama</span>
+                        Selamat Datang, <span class="text-primary"><?= $usr_name ?></span>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="user_dropdown">
@@ -48,37 +61,65 @@
     <!-- Cart List -->
     <div class="container-fluid cart-table">
         <div class="row justify-content-center align-content-center">
+            <!-- <button type="button" class="close" data-dismiss="cart_beauty.php" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> -->
+            
             <table class="table text-center">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama Barang</th>
                         <th scope="col">Harga</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">
+                            Aksi 
+                            <a type="button" class="btn btn-light close" href="index_beauty.php"
+                            onmouseover="this.style.color='red';" onmouseout="this.style.color='';">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
+    <?php
+        $row_cart = query("SELECT * FROM `cart`");
+
+        if(empty($row_cart)){
+
+        }else{
+            $col_num = 1;
+            $price_temp = 0;
+            foreach ($row_cart as $row) {
+                $price_temp += $row['harga'];
+    ?>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>coba</td>
-                        <td>Rp 333</td>
+                        <th scope="row"><?= $col_num?></th>
+                        <td><?= $row['nama_barang']?></td>
+                        <td>Rp <?= $row['harga']?></td>
                         <td>
                             <form action="" method="post"
-                                onsubmit="return confirm('Are you sure to delete this event?');">
+                                onsubmit="return confirm('Yakin ingin membatalkan pesanan Skincare ini?');">
                                 <input type="submit" class="btn btn-danger" name="del_event" value="Hapus"
                                     style="width:10em;">
                             </form>
                         </td>
                     </tr>
                 </tbody>
+    <?php
+                $col_num += 1;
+            }
+    ?>
                 <tbody>
                     <tr>
                         <th scope="row">Total</th>
                         <td></td>
-                        <td>Rp 34344</td>
+                        <td><b>Rp <?= $price_temp?></b></td>
                         <td></td>
                     </tr>
                 </tbody>
+    <?php
+        }
+    ?>
             </table>
         </div>
 
