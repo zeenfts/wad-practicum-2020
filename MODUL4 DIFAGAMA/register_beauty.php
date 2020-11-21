@@ -60,10 +60,12 @@
         // echo 'You\'ll be redirected in about 5 secs. ';
         // echo 'If not, click <a href="wherever.php">here</a>.';
 
-        $row_usr = query("SELECT `id` FROM `user` WHERE `email` = '$eml'");
+        $row_usr = query("SELECT * FROM `user` WHERE `email` = '$eml'")[0];
+        session_start();
+        $_SESSION['reg_email'] = $row_usr['email'];
         
         }else if($eff_rw == 0){?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             Gagal registrasi!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

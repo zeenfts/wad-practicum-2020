@@ -13,6 +13,20 @@
 </head>
 
 <body>
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_byu.php';
+        session_start();
+        $res_row = query("SELECT * FROM prod_catalog");
+        $usr_id = '';
+
+        if(!empty($_SESSION['log_email'])){
+            $log_email = $_SESSION['log_email'];
+            $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
+            $usr_name = $row_usr['nama'];
+        }
+    ?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand navbar-light fixed-top">
         <a class="navbar-brand mb-0 h1" href="">EAD Beauty</a>
@@ -32,24 +46,18 @@
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="" id="user_dropdown" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Selamat Datang, <span class="text-primary">nama</span>
+                        Selamat Datang, <span class="text-primary"><?= $usr_name?></span>
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="user_dropdown">
                         <a class="dropdown-item" href="profile_beauty.php">Profile</a>
-                        <a class="dropdown-item" href="login_beauty.php" onmouseover="this.style.color='red';"
+                        <a class="dropdown-item" href="login_beauty.php?out=hjfeje" onmouseover="this.style.color='red';"
                             onmouseout="this.style.color='';">Logout</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-
-    <!-- PHP Section -->
-    <?php
-        require 'db_conn_byu.php';
-        $res_row = query("SELECT * FROM prod_catalog");
-    ?>
 
     <!-- Content -->
     <div class="container-fluid">

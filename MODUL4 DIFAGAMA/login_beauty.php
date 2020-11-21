@@ -37,6 +37,7 @@
     <!-- PHP Section -->
     <?php
         require 'db_conn_byu.php';
+        session_start();
 
         $notif_alert='';
         if(isset($_POST["login_form"])){
@@ -53,10 +54,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>';
+                $_SESSION['log_email'] = $user['email'];
                 header("Refresh:5;url=index_beauty.php");
+                
+                if(isset($_SESSION['loginTime'])){
+                    unset($_SESSION['loginTime']);
+                }
             }else{
                 $notif_alert =  '
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Gagal login! (periksa kembali mungkin ada data yang tidak sesuai)
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -79,12 +85,25 @@
                             Login
                         </div>
                         <div class="card-body">
+                        <?php
+                            if(!isset($_POST['rem_me'])){
+                        ?>
                             <div class="form-group row-md-4">
                                 E-mail
                                 <input type="email" class="form-control" name="emaill"
                                     placeholder="Masukkan Alamat E-mail" required="required">
                             </div>
-
+                        <?php
+                            }else{
+                        ?>
+                            <div class="form-group row-md-4">
+                                E-mail
+                                <input type="email" class="form-control" name="emaill" value="<?= $_SESSION['reg_email']?>"
+                                    placeholder="Masukkan Alamat E-mail" required="required">
+                            </div>
+                        <?php
+                            }
+                        ?>
                             <div class="form-group row-md-4">
                                 Kata Sandi
                                 <input type="password" class="form-control" name="sandi1"
