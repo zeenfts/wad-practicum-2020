@@ -16,7 +16,7 @@ nav{
     color: rgb(56, 201, 153);
 }
 
-.card-temp{
+.card-temp, .pass-nav{
     padding: 30px;
 }
 
@@ -34,7 +34,7 @@ nav{
     background-color: white;
 }
 
-.card-body{
+.card-body, .pass-nav{
     padding: 15px 55px 0 55px;
 }
 

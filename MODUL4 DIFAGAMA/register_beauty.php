@@ -37,7 +37,6 @@
     <div class="container-fluid">
         <form action="login_beauty.php" method="post">
             <div class="row justify-content-center align-content-center">
-                <!-- Left form -->
                 <div class="col-md-auto card-temp">
                     <div class="card">
                         <div class="card-header text-center h3">

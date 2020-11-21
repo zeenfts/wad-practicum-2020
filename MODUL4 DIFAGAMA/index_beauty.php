@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="./assets/home_event.css"> -->
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -24,7 +24,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-flex align-items-center">
                     <a href="cart_beauty.php">
-                        <i class="fa fa-lg" style="color: rgb(236, 150, 67); padding-right:.3em">&#xf07a;</i>
+                        <i class="fa fa-2x" style="color: rgb(180, 10, 67); padding-right:.3em">&#xf07a;</i>
                     </a>
                 </li>
                 <li class="nav-item dropdown active"> 
