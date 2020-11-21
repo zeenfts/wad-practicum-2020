@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand navbar-light fixed-top">
@@ -22,18 +24,61 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                <a class="nav-link" href="">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="">Login <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link btn btn-light" href="register_beauty.php">Register</a>
+                    <a class="nav-link btn btn-light" href="register_beauty.php">Register</a>
                     <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="link">Search</button> -->
                 </li>
             </ul>
         </div>
     </nav>
 
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_byu.php';
+
+        $notif_alert='';
+        if(isset($_POST["regis_form"])){
+            $eml = $_POST["emaill"];
+            $eff_rw = add_data($_POST, query("SELECT `id` FROM `user` WHERE `email` = '$eml'"));
+            
+            if($eff_rw > 0){
+                $notif_alert =  '
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Berhasil registrasi!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            }else{
+                $notif_alert =  '
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Gagal registrasi!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+                header("Location: register_beauty.php");
+            }
+        }
+
+        // session_start();
+        // $sign = '
+        // <li class="nav-item"><br>
+        //     <a class="nav-link" data-toggle="modal" data-target="#form_sign_in" href="#">Sign In</a><br>
+        // </li><br>
+        // <li class="nav-item"><br>
+        //     <button class="btn class btn btn-primary" data-toggle="modal" data-target="#exampleModal">Join for Free</button><br>
+        // </li>
+        // ';
+        // $_SESSION['sign'] = $sign;
+    ?>
+
     <!-- Content -->
     <div class="container-fluid">
+        <?= $notif_alert?>
+
         <form action="index_beauty.php" method="post">
             <div class="row justify-content-center align-content-center">
                 <div class="col-md-auto card-temp">
@@ -50,14 +95,15 @@
 
                             <div class="form-group row-md-4">
                                 Kata Sandi
-                                <input type="password" class="form-control" name="sandi1" placeholder="Masukkan Kata Sandi" required="required">
+                                <input type="password" class="form-control" name="sandi1"
+                                    placeholder="Masukkan Kata Sandi" required="required">
                             </div>
 
                             <div class="form-group row-md-4">
                                 <div class="form-check">
                                     <div class="col-md-auto">
-                                        <input class="form-check-input" type="checkbox" name="rem_me" value="Remember Me"
-                                            id="benefit_check1">
+                                        <input class="form-check-input" type="checkbox" name="rem_me"
+                                            value="Remember Me" id="benefit_check1">
                                         Remember Me
                                         <br />
                                     </div>
@@ -71,7 +117,7 @@
                             <!-- <input type="reset" class="btn btn-light" value="Clear"
                                 onmouseover="this.style.color='red';" onmouseout="this.style.color='';"> -->
                             <a class="btn hover-t" href="register_beauty.php">
-                                Belum punya Akun? <span class="text-primary">Registrasi</span>
+                                Belum punya akun? <span class="text-primary">Registrasi</span>
                             </a>
                         </div>
                     </div>
@@ -90,4 +136,5 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
 </body>
+
 </html>

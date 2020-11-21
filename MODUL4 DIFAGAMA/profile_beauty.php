@@ -68,19 +68,22 @@
 
                             <div class="form-group row-md-4">
                                 Nomor Handphone
-                                <input type="text" class="form-control" name="hp_no" value="03839933">
+                                <input type="number" class="form-control" name="hp_no" value=03839933>
                             </div>
                         </div>
 
                         <div class="card-footer pass-nav">
                             <div class="form-group row-md-4">
                                 Password
-                                <input type="password" class="form-control" name="sandi1" required="required">
+                                <input type="password" class="form-control" name="sandi1" required="required"
+                                    id="sandi1" onkeyup='check();'>
                             </div>
 
                             <div class="form-group row-md-4">
                                 Confirm Password
-                                <input type="password" class="form-control" name="sandi2" required="required">
+                                <input type="password" class="form-control" name="sandi2" required="required"
+                                    id="sandi2" onkeyup='check();'>
+                                <span id='message'></span>
                             </div>
 
                             <div class="form-group">
@@ -93,7 +96,8 @@
                         </div>
 
                         <div class="card-footer text-center">
-                            <input type="submit" class="btn btn-primary btn-block" value="Submit" name="profile_form">
+                            <input type="submit" class="btn btn-primary btn-block" value="Submit" name="profile_form"
+                                id="submit">
                             <!-- <input type="submit" class="btn btn-light btn-block" value="Cancel"
                                 onmouseover="this.style.color='red';" onmouseout="this.style.color='';"> -->
                             <a type="button" class="btn btn-light btn-block" href="index_beauty.php"
@@ -119,6 +123,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <script src="./assets/scripts.js"></script>
 </body>
 
 </html>

@@ -45,8 +45,8 @@
                         <div class="card-body">
                             <div class="form-group row-md-4">
                                 Nama
-                                <input type="text" class="form-control" name="namaa"
-                                    placeholder="Masukkan Nama Lengkap">
+                                <input type="text" class="form-control" name="namaa" placeholder="Masukkan Nama Lengkap"
+                                    required="required">
                             </div>
 
                             <div class="form-group row-md-4">
@@ -57,24 +57,27 @@
 
                             <div class="form-group row-md-4">
                                 No. Handphone
-                                <input type="text" class="form-control" name="hp_no"
+                                <input type="number" class="form-control" name="hp_no"
                                     placeholder="Masukkan Nomor Handphone">
                             </div>
 
                             <div class="form-group row-md-4">
                                 Kata Sandi
-                                <input type="password" class="form-control" name="sandi1" placeholder="Buat Kata Sandi" required="required">
+                                <input type="password" class="form-control" name="sandi1" placeholder="Buat Kata Sandi"
+                                    required="required" id="sandi1" onkeyup='check();'>
                             </div>
 
                             <div class="form-group row-md-4">
                                 Konfirmasi Kata Sandi
                                 <input type="password" class="form-control" name="sandi2"
-                                    placeholder="Konfirmasi Kata Sandi" required="required">
+                                    placeholder="Konfirmasi Kata Sandi" required="required" id="sandi2"
+                                    onkeyup='check();'>
+                                <span id='message'></span>
                             </div>
                         </div>
                         <div class="card-footer text-center">
                             <input type="submit" class="btn btn-primary" value="Daftar" name="regis_form"
-                                style="width:10em;">
+                                style="width:10em;" id="submit">
                             <input type="reset" class="btn btn-light" value="Clear"
                                 onmouseover="this.style.color='red';" onmouseout="this.style.color='';">
                             <a class="btn hover-t" href="login_beauty.php">
@@ -96,6 +99,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
+    <script src="./assets/scripts.js"></script>
 </body>
 
 </html>

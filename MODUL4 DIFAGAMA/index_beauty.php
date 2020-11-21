@@ -47,11 +47,13 @@
 
     <!-- Content -->
     <div class="container-fluid">
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
             This is a success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
             like.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-
         <!-- Outer Card -->
         <div class="row justify-content-center align-content-center">
             <div class="card card-outside">
@@ -76,7 +78,8 @@
                                     <b>Harga</b>
                                 </div>
                                 <div class="card-footer">
-                                    <a type="button" class="btn btn-primary" href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
+                                    <a type="button" class="btn btn-primary"
+                                        href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +98,8 @@
                                     <b>Harga</b>
                                 </div>
                                 <div class="card-footer">
-                                    <a type="button" class="btn btn-primary" href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
+                                    <a type="button" class="btn btn-primary"
+                                        href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +118,8 @@
                                     <b>Harga</b>
                                 </div>
                                 <div class="card-footer">
-                                    <a type="button" class="btn btn-primary" href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
+                                    <a type="button" class="btn btn-primary"
+                                        href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a>
                                 </div>
                             </div>
                         </div>
@@ -133,6 +138,19 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script>
+    $(function() {
+        TriggerAlertClose();
+    });
+
+    function TriggerAlertClose() {
+        window.setTimeout(function() {
+            $(".alert-dismissible").fadeTo(1000, 0).slideUp(1000, function() {
+                $(this).remove();
+            });
+        }, 5000);
+    }
     </script>
 </body>
 
