@@ -31,7 +31,9 @@
         }
 
         // add product to cart
-        $eff_rw = add_data($_GET, $usr_id);
+        if(isset($_GET['add_product'])){
+            $eff_rw = add_data($_GET, $usr_id);
+        }
 
         if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
             $nav_font = $_COOKIE['prf_navbar'];
@@ -113,21 +115,20 @@
                             <div class="card card-inside text-center">
                                 <img src="<?= $row['gambar']?>" class="card-img-top" alt="..."
                                     style="width: 100%;height: 12rem">
-                                <div class="card-body h4" name='brg_name'>
-                                    <b><?= $row['nama_brg']?></b>
+                                <div class="card-body h4">
+                                    <output name='brg_name'><b><?= $row['nama_brg']?></b></output>
                                 </div>
-                                <div class="card-text card-inside-tx" name='brg_desc'>
-                                    <p><?= $row['deskripsi']?></p>
-                                </div>
-                                <div class="card-footer" name='brg_price'>
-                                    <b>Rp <?= $row['harga_brg']?></b>
+                                <div class="card-text card-inside-tx">
+                                    <output name='brg_desc'><p><?= $row['deskripsi']?></p></output>
                                 </div>
                                 <div class="card-footer">
-                                    
-                                        <!-- <a type="button" class="btn btn-primary"
-                                            href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a> -->
-                                        <!-- <input type="submit" class="btn btn-primary" name="add_product" value="Tambah ke Keranjang"> -->
-                                        <a type="button" class="btn btn-primary" href="?id=<?= $row['nama_brg']?>">Tambah ke Keranjang</a>
+                                    <output name='brg_price'><b>Rp <?= $row['harga_brg']?></b></output>
+                                </div>
+                                <div class="card-footer">
+                                <!-- Static (activate the form tag, too)-->
+                                    <!-- <input type="submit" class="btn btn-primary" name="add_product" value="Tambah ke Keranjang"> -->
+                                <!-- Dynamic -->
+                                    <a type="button" class="btn btn-primary" href="?add_product=<?= $row['nama_brg']?>">Tambah ke Keranjang</a>
                                 </div>
                             </div>
                         <!-- </form> -->

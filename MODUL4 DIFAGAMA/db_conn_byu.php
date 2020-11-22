@@ -16,9 +16,10 @@
     }
 
     if(isset($_GET['delp'])){
-        // header("Location:cart_beauty.php");
+        
         $prod_id = $_GET['delp'];
-        $eff_rw = del_data($prod_id);
+        $_SESSION['eff_rw'] = del_data($prod_id);
+        header("Location:cart_beauty.php");
     }
     
     function query($query){
@@ -54,12 +55,14 @@
             $hash_pass = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT INTO `user` VALUES ('$id_num', '$nama', '$email', '$handphone', '$hash_pass')";
 
-        }else if(isset($_GET['id'])){
-            $id_brg = $_GET['id'];
+        }else if(isset($data['add_product'])){
+            $id_brg = $data['add_product'];
             $id_num = date("d").date("H").date("i").strval(rand(100,999));
             $rs_row = query("SELECT * FROM `prod_catalog` WHERE `nama_brg`='$id_brg'")[0];
+            // dynamic
             $nama_barang = $rs_row['nama_brg'];
             $harga = $rs_row['harga_brg'];
+            // // static
             // $nama_barang = $data['brg_name'];
             // $harga = $data['brg_price'];
             $query = "INSERT INTO `cart` VALUES ('$id_num', '$user_id', '$nama_barang', '$harga')";

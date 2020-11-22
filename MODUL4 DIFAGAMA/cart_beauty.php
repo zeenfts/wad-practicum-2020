@@ -71,7 +71,12 @@
     <div class="container-fluid cart-table">
     <?php
         // alert delete product from cart
-        if($eff_rw > 0){
+        $rwfe = -1;
+        if(isset($_SESSION['eff_rw'])){
+            $rwfe = $_SESSION['eff_rw'];
+        }
+        if($rwfe > 0){
+            unset($_SESSION['eff_rw']);
     ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             Berhasil menghapus produk
@@ -80,7 +85,8 @@
             </button>
         </div>
     <?php
-        }else if($eff_rw == 0){
+        }else if($rwfe == 0){
+            unset($_SESSION['eff_rw']);
     ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             Produk tidak berhasil dihapus!!!
