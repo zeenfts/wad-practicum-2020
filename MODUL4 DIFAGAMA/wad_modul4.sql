@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2020 at 09:26 AM
+-- Generation Time: Nov 22, 2020 at 09:33 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -93,8 +93,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `nama`, `email`, `no_hp`, `password`) VALUES
 (212151422, 'sanny devert', 'dsaneey@gmail.com', 83242425, '$2y$10$poTnbgx8DA/WGbBJTg5VRO0LeYEiDaHBElc3uXV3mcrlqH/q/0kOS'),
 (216191421, 'max high', 'maxxco@gmail.com', 83555555555, '$2y$10$mb4Rr0pCcXyw/AnHqvhbWuEqj3PtIUheFhW0CCdj8mm/5PYqzQ8r.'),
-(217671418, 'sally ice', 'skukss@gmail.com', 0, '$2y$10$HeT3gk4XpTebZtBHdgBrvunMkbm57U7tjlMEUSVTrVHvQLAyl.33i'),
-(228050858, 'open test 2', 'bluemul07@gmail.com', 0, '$2y$10$pPVdqH0mxY2iY9IFDzHwTeAaF1IEhQQ57MfhWuNs4D9aSBBssplG6');
+(217671418, 'sally ice', 'skukss@gmail.com', 0, '$2y$10$HeT3gk4XpTebZtBHdgBrvunMkbm57U7tjlMEUSVTrVHvQLAyl.33i');
 
 --
 -- Indexes for dumped tables
