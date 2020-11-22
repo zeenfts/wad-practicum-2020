@@ -18,11 +18,13 @@
         require 'db_conn_byu.php';
         session_start();
         $usr_name = '';
+        $usr_id = '';
 
         if(!empty($_SESSION['log_email'])){
             $log_email = $_SESSION['log_email'];
             $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
             $usr_name = $row_usr['nama'];
+            $usr_id = $row_usr['id'];
         }
     ?>
 
@@ -80,17 +82,14 @@
                         </th>
                     </tr>
                 </thead>
-    <?php
-        $row_cart = query("SELECT * FROM `cart`");
+        <?php
+            $row_cart = query("SELECT * FROM `cart` WHERE `user_id`='$usr_id'");
 
-        if(empty($row_cart)){
-
-        }else{
             $col_num = 1;
             $price_temp = 0;
             foreach ($row_cart as $row) {
                 $price_temp += $row['harga'];
-    ?>
+        ?>
                 <tbody>
                     <tr>
                         <th scope="row"><?= $col_num?></th>
@@ -105,10 +104,10 @@
                         </td>
                     </tr>
                 </tbody>
-    <?php
+        <?php
                 $col_num += 1;
             }
-    ?>
+        ?>
                 <tbody>
                     <tr>
                         <th scope="row">Total</th>
@@ -117,9 +116,6 @@
                         <td></td>
                     </tr>
                 </tbody>
-    <?php
-        }
-    ?>
             </table>
         </div>
 

@@ -28,6 +28,7 @@
             $usr_id = $row_usr['id'];
         }
 
+        // add product to cart
         $eff_rw = add_data($_GET, $usr_id);
     ?>
 
@@ -66,6 +67,7 @@
     <!-- Content -->
     <div class="container-fluid">
     <?php
+        // alert add product to cart
         if($eff_rw > 0){
     ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -97,10 +99,7 @@
                     <!-- Inner Card -->
                     <div class="row justify-content-center align-content-center">
                 <?php 
-                    if(empty($res_row)){
-                        
-                    }else{
-                        foreach ($res_row as $row) {
+                    foreach ($res_row as $row) {
                 ?>
                         <div class="col-md-4 card-inside-outer">
                             <!-- <form action="" method="post" onsubmit=""> -->
@@ -121,13 +120,12 @@
                                         <!-- <a type="button" class="btn btn-primary"
                                             href="event_details.php?id='.$row['id'].'">Tambah ke Keranjang</a> -->
                                         <!-- <input type="submit" class="btn btn-primary" name="add_product" value="Tambah ke Keranjang"> -->
-                                        <a type="button" class="btn btn-primary" href="?id=<?= $row['nama_brg']?>" style="width:6em;">Detail</a>
+                                        <a type="button" class="btn btn-primary" href="?id=<?= $row['nama_brg']?>">Tambah ke Keranjang</a>
                                 </div>
                             </div>
                         <!-- </form> -->
                         </div>
                 <?php
-                        }
                     }
                 ?>
                     </div>

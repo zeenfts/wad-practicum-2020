@@ -18,11 +18,17 @@
         require 'db_conn_byu.php';
         session_start();
         $usr_name = '';
+        $usr_id = '';
 
         if(!empty($_SESSION['log_email'])){
             $log_email = $_SESSION['log_email'];
             $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
             $usr_name = $row_usr['nama'];
+            $usr_id = $row_usr['id'];
+        }
+
+        if(isset($_POST['profile_form'])) {
+            $eff_rw = edit_data($usr_id);
         }
     ?>
 
@@ -60,6 +66,28 @@
 
     <!-- Content -->
     <div class="container-fluid">
+    <?php
+        // alert update profile
+        if($eff_rw > 0){
+    ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Berhasil mengupdate data diri!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php
+        }else if($eff_rw == 0){
+    ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Profile tidak berhasil diupdate!!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php  
+        }
+    ?>
         <form action="" method="post">
             <div class="row justify-content-center align-content-center">
                 <div class="col-md-auto card-temp">
@@ -74,32 +102,29 @@
                         <div class="card-body">
                             <div class="form-group row-md-4">
                                 E-mail
-                                <input type="email" class="form-control" name="emaill" value="asaksk@gmail.com"
-                                    disabled>
+                                <input type="email" class="form-control" name="prof_email" value="<?= $row_usr['email']?>" disabled>
                             </div>
 
                             <div class="form-group row-md-4">
                                 Nama
-                                <input type="text" class="form-control" name="namaa" value="Heed Skk">
+                                <input type="text" class="form-control" name="prof_nama" value="<?= $row_usr['nama']?>">
                             </div>
 
                             <div class="form-group row-md-4">
                                 Nomor Handphone
-                                <input type="number" class="form-control" name="hp_no" value=03839933>
+                                <input type="number" class="form-control" name="prof_hp" value=<?= $row_usr['no_hp']?>>
                             </div>
                         </div>
 
                         <div class="card-footer pass-nav">
                             <div class="form-group row-md-4">
-                                Password
-                                <input type="password" class="form-control" name="sandi1" required="required"
-                                    id="sandi1" onkeyup='check();'>
+                                New Password
+                                <input type="password" class="form-control" name="prof_sandi1" id="sandi1" onkeyup='check();'>
                             </div>
 
                             <div class="form-group row-md-4">
-                                Confirm Password
-                                <input type="password" class="form-control" name="sandi2" required="required"
-                                    id="sandi2" onkeyup='check();'>
+                                Confirm New Password
+                                <input type="password" class="form-control" name="prof_sandi2" id="sandi2" onkeyup='check();'>
                                 <span id='message'></span>
                             </div>
 
@@ -113,8 +138,7 @@
                         </div>
 
                         <div class="card-footer text-center">
-                            <input type="submit" class="btn btn-primary btn-block" value="Submit" name="profile_form"
-                                id="submit">
+                            <input type="submit" class="btn btn-primary btn-block" value="Submit" name="profile_form" id="submit">
                             <!-- <input type="submit" class="btn btn-light btn-block" value="Cancel"
                                 onmouseover="this.style.color='red';" onmouseout="this.style.color='';"> -->
                             <a type="button" class="btn btn-light btn-block" href="index_beauty.php"
