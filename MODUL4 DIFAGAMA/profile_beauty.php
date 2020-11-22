@@ -24,6 +24,7 @@
         $def_nav = 'selected';
         $nav_font = '';
         $nav_bg = '';
+        $nav_reg = '';
 
         if(!empty($_SESSION['log_email'])){
             $log_email = $_SESSION['log_email'];
@@ -39,14 +40,17 @@
             $val_nav_col = $_POST['nav_colr'];
 
             if($val_nav_col == 'def_colour'){
-                setcookie('prf_navbar', 'navbar-light', time()+ 86400,'/');
-                setcookie('prf_navbg', 'custom-bg-nav', time()+ 86400,'/');
+                setcookie('prf_navbar', 'navbar-light', time()+ 86400*30,'/');
+                setcookie('prf_navbg', 'custom-bg-nav', time()+ 86400*30,'/');
+                setcookie('prf_navreg', 'btn-light', time()+ 86400*30,'/');
             }else if($val_nav_col == 'lgh_colour'){
-                setcookie('prf_navbar', 'navbar-light', time()+ 86400,'/');
-                setcookie('prf_navbg', 'bg-light', time()+ 86400,'/');
+                setcookie('prf_navbar', 'navbar-light', time()+ 86400*30,'/');
+                setcookie('prf_navbg', 'bg-light', time()+ 86400*30,'/');
+                setcookie('prf_navreg', 'btn-info', time()+ 86400*30,'/');
             }else if($val_nav_col == 'dk_colour'){
-                setcookie('prf_navbar', 'navbar-dark', time()+ 86400,'/');
-                setcookie('prf_navbg', 'bg-dark', time()+ 86400,'/');
+                setcookie('prf_navbar', 'navbar-dark', time()+ 86400*30,'/');
+                setcookie('prf_navbg', 'bg-dark', time()+ 86400*30,'/');
+                setcookie('prf_navreg', 'btn-primary', time()+ 86400*30,'/');
             }
         }
 

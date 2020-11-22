@@ -12,8 +12,26 @@
 </head>
 
 <body>
+    <!-- PHP Section -->
+    <?php
+        require 'db_conn_byu.php';
+
+        $notif_alert='';
+
+        if(isset($_POST["regis_form"])){
+            $eml = $_POST["emaill"];
+            $eff_rw = add_data($_POST, '');
+        }
+
+        if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg']) and !empty($_COOKIE['prf_navreg'])){
+            $nav_font = $_COOKIE['prf_navbar'];
+            $nav_bg = $_COOKIE['prf_navbg'];
+            $nav_reg = $_COOKIE['prf_navreg'];
+        }
+    ?>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand navbar-light fixed-top">
+    <nav class="navbar navbar-expand <?= $nav_font?> fixed-top <?= $nav_bg?>">
         <a class="navbar-brand mb-0 h1" href="">EAD Beauty</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -27,28 +45,11 @@
                     <a class="nav-link" href="login_beauty.php">Login</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link btn btn-light" href="">Register <span class="sr-only">(current)</span></a>
+                    <a class="nav-link btn <?= $nav_reg?>" href="">Register <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
     </nav>
-
-    <!-- PHP Section -->
-    <?php
-        require 'db_conn_byu.php';
-
-        $notif_alert='';
-
-        if(isset($_POST["regis_form"])){
-            $eml = $_POST["emaill"];
-            $eff_rw = add_data($_POST, '');
-        }
-
-        if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
-            $nav_font = $_COOKIE['prf_navbar'];
-            $nav_bg = $_COOKIE['prf_navbg'];
-        }
-    ?>
 
     <!-- Content -->
     <div class="container-fluid">
