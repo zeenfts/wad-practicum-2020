@@ -26,6 +26,12 @@
             $usr_name = $row_usr['nama'];
             $usr_id = $row_usr['id'];
         }
+
+        if(isset($_GET['delp'])){
+            $prod_id = $_GET['delp'];
+            $eff_rw = del_data($prod_id);
+            header("Location: cart_beauty.php");
+        }
     ?>
 
     <!-- Navbar -->
@@ -62,11 +68,32 @@
 
     <!-- Cart List -->
     <div class="container-fluid cart-table">
+    <?php
+        // alert delete product from cart
+        if($eff_rw > 0){
+    ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Berhasil menghapus produk
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php
+        }else if($eff_rw == 0){
+    ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Produk tidak berhasil dihapus!!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php  
+        }
+    ?>
         <div class="row justify-content-center align-content-center">
             <!-- <button type="button" class="close" data-dismiss="cart_beauty.php" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button> -->
-            
             <table class="table text-center">
                 <thead>
                     <tr>
@@ -96,11 +123,12 @@
                         <td><?= $row['nama_barang']?></td>
                         <td>Rp <?= $row['harga']?></td>
                         <td>
-                            <form action="" method="post"
+                            <!-- <form action="" method="get"
                                 onsubmit="return confirm('Yakin ingin membatalkan pesanan Skincare ini?');">
-                                <input type="submit" class="btn btn-danger" name="del_event" value="Hapus"
+                                <input type="submit" class="btn btn-danger" name="del_prod" value="Hapus"
                                     style="width:10em;">
-                            </form>
+                            </form> -->
+                            <a href="?delp=<?= $row['id']?>" class="btn btn-danger" role="button">Hapus</a>
                         </td>
                     </tr>
                 </tbody>
