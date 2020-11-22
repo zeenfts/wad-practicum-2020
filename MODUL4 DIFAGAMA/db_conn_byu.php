@@ -1,9 +1,24 @@
-<?php 
+<?php
+    session_start();
     $conn = mysqli_connect("localhost", "root", "", "wad_modul4");
-    $eff_rw = -1; 
+    $eff_rw = -1;
 
     if(!$conn) {
 		die("Can't connect bruh : ".mysql_connect_error());
+    }
+
+    if(isset($_GET['out_log'])){
+        if($_GET['out_log'] == 'zft'){
+            // unset($_SESSION['log_email']);
+            session_destroy();
+            header("Location: login_beauty.php");
+        }
+    }
+
+    if(isset($_GET['delp'])){
+        header("Location:cart_beauty.php");
+        $prod_id = $_GET['delp'];
+        $eff_rw = del_data($prod_id);
     }
     
     function query($query){
@@ -28,7 +43,7 @@
         $password = '';
         $nama_barang = '';
         $harga = 0;
-        $query = '';
+        $query = "SELECT * FROM `prod_catalog`";
 
         if(isset($data['regis_form'])){
             $id_num = date("d").strval(rand(100,999)).date("H").date("i");

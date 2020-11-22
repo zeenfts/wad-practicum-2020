@@ -25,17 +25,18 @@
             $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
             $usr_name = $row_usr['nama'];
             $usr_id = $row_usr['id'];
+        }else{
+            header("Location: login_beauty.php");
         }
 
-        if(isset($_GET['delp'])){
-            $prod_id = $_GET['delp'];
-            $eff_rw = del_data($prod_id);
-            header("Location: cart_beauty.php");
+        if(!empty($_COOKIE['prf_navbar'])){
+            $nav_font = $_COOKIE['prf_navbar'];
+            $nav_bg = $_COOKIE['prf_navbg'];
         }
     ?>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand navbar-light fixed-top">
+    <nav class="navbar navbar-expand <?= $nav_font?> fixed-top <?= $nav_bg?>">
         <a class="navbar-brand mb-0 h1" href="">EAD Beauty</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -58,7 +59,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="user_dropdown">
                         <a class="dropdown-item" href="profile_beauty.php">Profile</a>
-                        <a class="dropdown-item" href="login_beauty.php" onmouseover="this.style.color='red';"
+                        <a class="dropdown-item" href="db_conn_byu.php?out_log=zft" onmouseover="this.style.color='red';"
                             onmouseout="this.style.color='';">Logout</a>
                     </div>
                 </li>
@@ -128,7 +129,7 @@
                                 <input type="submit" class="btn btn-danger" name="del_prod" value="Hapus"
                                     style="width:10em;">
                             </form> -->
-                            <a href="?delp=<?= $row['id']?>" class="btn btn-danger" role="button">Hapus</a>
+                            <a href="db_conn_byu.php?delp=<?= $row['id']?>" class="btn btn-danger" role="button">Hapus</a>
                         </td>
                     </tr>
                 </tbody>

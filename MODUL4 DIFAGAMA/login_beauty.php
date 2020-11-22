@@ -69,21 +69,18 @@
                 $_SESSION['log_email'] = $user['email'];
                 $_SESSION['log_user_id'] = $user['id'];
 
-                if (is_null($_POST['rem_me'])) {
+                if (!isset($_POST['rem_me'])) {
                     setcookie('log_email_user', '', 0, '/');
                     setcookie('log_pass_user', '', 0, '/');
                     setcookie('log_rem_me', '', 0, '/');
                 } else {
-                    setcookie("log_email_user", $_POST['emaill'], time()+ 86400,'/');
-                    setcookie("log_pass_user", $_POST['sandi1'], time()+ 86400,'/');
-                    setcookie("log_rem_me", "checked", time()+ 86400,'/');
+                    setcookie('log_email_user', $_POST['emaill'], time()+ 86400,'/');
+                    setcookie('log_pass_user', $_POST['sandi1'], time()+ 86400,'/');
+                    setcookie('log_rem_me', 'checked', time()+ 86400,'/');
                 }
 
                 header("Refresh:5;url=index_beauty.php");
 
-                // if(isset($_SESSION['loginTime'])){
-                //     unset($_SESSION['loginTime']);
-                // }
             }else{
                 $notif_alert =  '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -95,6 +92,11 @@
                 // header("Location: register_beauty.php");
             }
         }
+
+        // if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
+        //     $nav_font = $_COOKIE['prf_navbar'];
+        //     $nav_bg = $_COOKIE['prf_navbg'];
+        // }
     ?>
 
     <!-- Content -->

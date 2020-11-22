@@ -20,20 +20,28 @@
         $res_row = query("SELECT * FROM prod_catalog");
         $usr_name = '';
         $usr_id = '';
+        // var_dump($_SESSION['log_email']);
 
         if(!empty($_SESSION['log_email'])){
             $log_email = $_SESSION['log_email'];
             $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
             $usr_name = $row_usr['nama'];
             $usr_id = $row_usr['id'];
+        }else{
+            header("Location: login_beauty.php");
         }
 
         // add product to cart
         $eff_rw = add_data($_GET, $usr_id);
+
+        if(!empty($_COOKIE['prf_navbar'])){
+            $nav_font = $_COOKIE['prf_navbar'];
+            $nav_bg = $_COOKIE['prf_navbg'];
+        }
     ?>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand navbar-light fixed-top">
+    <nav class="navbar navbar-expand <?= $nav_font?> fixed-top <?= $nav_bg?>">
         <a class="navbar-brand mb-0 h1" href="">EAD Beauty</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -56,7 +64,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="user_dropdown">
                         <a class="dropdown-item" href="profile_beauty.php">Profile</a>
-                        <a class="dropdown-item" href="login_beauty.php?out=hjfeje" onmouseover="this.style.color='red';"
+                        <a class="dropdown-item" href="db_conn_byu.php?out_log=zft" onmouseover="this.style.color='red';"
                             onmouseout="this.style.color='';">Logout</a>
                     </div>
                 </li>

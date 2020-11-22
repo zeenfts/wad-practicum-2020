@@ -19,21 +19,59 @@
         session_start();
         $usr_name = '';
         $usr_id = '';
+        $light_nav = null;
+        $dark_nav = null;
+        $def_nav = 'selected';
+        $nav_font = '';
+        $nav_bg = '';
 
         if(!empty($_SESSION['log_email'])){
             $log_email = $_SESSION['log_email'];
             $row_usr = query("SELECT * FROM `user` WHERE email='$log_email'")[0];
             $usr_name = $row_usr['nama'];
             $usr_id = $row_usr['id'];
+        }else{
+            header("Location: login_beauty.php");
         }
 
         if(isset($_POST['profile_form'])) {
             $eff_rw = edit_data($usr_id);
+            $val_nav_col = $_POST['nav_colr'];
+
+            if($val_nav_col == 'def_colour'){
+                setcookie('prf_navbar', 'navbar-light', time()+ 86400,'/');
+                setcookie('prf_navbg', 'custom-bg-nav', time()+ 86400,'/');
+            }else if($val_nav_col == 'lgh_colour'){
+                setcookie('prf_navbar', 'navbar-light', time()+ 86400,'/');
+                setcookie('prf_navbg', 'bg-light', time()+ 86400,'/');
+            }else if($val_nav_col == 'dk_colour'){
+                setcookie('prf_navbar', 'navbar-dark', time()+ 86400,'/');
+                setcookie('prf_navbg', 'bg-dark', time()+ 86400,'/');
+            }
+        }
+
+        if ($_COOKIE['prf_navbar'] == 'navbar-light' and $_COOKIE['prf_navbg'] == 'custom-bg-nav') {
+            $light_nav = null;
+            $dark_nav = null;
+            $def_nav = 'selected';
+        }else if($_COOKIE['prf_navbar'] == 'navbar-light' and $_COOKIE['prf_navbg'] == 'bg-light'){
+            $light_nav = 'selected';
+            $dark_nav = null;
+            $def_nav = null;
+        }else{
+            $light_nav = null;
+            $dark_nav = 'selected';
+            $def_nav = null;
+        }
+
+        if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
+            $nav_font = $_COOKIE['prf_navbar'];
+            $nav_bg = $_COOKIE['prf_navbg'];
         }
     ?>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand navbar-light fixed-top">
+    <nav class="navbar navbar-expand <?= $nav_font?> fixed-top <?= $nav_bg?>">
         <a class="navbar-brand mb-0 h1" href="">EAD Beauty</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -56,7 +94,7 @@
 
                     <div class="dropdown-menu" aria-labelledby="user_dropdown">
                         <a class="dropdown-item" href="profile_beauty.php">Profile</a>
-                        <a class="dropdown-item" href="login_beauty.php" onmouseover="this.style.color='red';"
+                        <a class="dropdown-item" href="db_conn_byu.php?out_log=zft" onmouseover="this.style.color='red';"
                             onmouseout="this.style.color='';">Logout</a>
                     </div>
                 </li>
@@ -80,7 +118,7 @@
         }else if($eff_rw == 0){
     ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            Profile tidak berhasil diupdate!!!
+            Profile tidak berhasil diupdate!!! (bisa karena tidak ada update atau hanya sekedar mengubah warna navbar)
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -131,8 +169,9 @@
                             <div class="form-group">
                                 Warna Navbar
                                 <select class="custom-select" name="nav_colr">
-                                    <option value="lb_colour">Light</option>
-                                    <option value="dark_colour">Dark</option>
+                                    <option value="def_colour" <?= $def_nav?>>Default</option>
+                                    <option value="lgh_colour" <?= $light_nav?>>Light</option>
+                                    <option value="dk_colour" <?= $dark_nav?>>Dark</option>
                                 </select>
                             </div>
                         </div>
