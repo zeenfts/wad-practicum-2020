@@ -20,7 +20,6 @@
         $res_row = query("SELECT * FROM prod_catalog");
         $usr_name = '';
         $usr_id = '';
-        // var_dump($_SESSION['log_email']);
 
         if(!empty($_SESSION['log_email'])){
             $log_email = $_SESSION['log_email'];
@@ -34,7 +33,7 @@
         // add product to cart
         $eff_rw = add_data($_GET, $usr_id);
 
-        if(!empty($_COOKIE['prf_navbar'])){
+        if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
             $nav_font = $_COOKIE['prf_navbar'];
             $nav_bg = $_COOKIE['prf_navbg'];
         }

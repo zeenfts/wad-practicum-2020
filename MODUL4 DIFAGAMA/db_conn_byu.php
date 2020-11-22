@@ -16,7 +16,7 @@
     }
 
     if(isset($_GET['delp'])){
-        header("Location:cart_beauty.php");
+        // header("Location:cart_beauty.php");
         $prod_id = $_GET['delp'];
         $eff_rw = del_data($prod_id);
     }
@@ -107,7 +107,6 @@
         $password = $_POST['prof_sandi1'];
         $hash_pass = password_hash($password, PASSWORD_DEFAULT);
         $query = '';
-        // var_dump($password);
 
         if(empty($password)){
             $query = "UPDATE `user` set  

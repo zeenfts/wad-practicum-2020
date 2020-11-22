@@ -43,6 +43,11 @@
             $eml = $_POST["emaill"];
             $eff_rw = add_data($_POST, '');
         }
+
+        if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
+            $nav_font = $_COOKIE['prf_navbar'];
+            $nav_bg = $_COOKIE['prf_navbg'];
+        }
     ?>
 
     <!-- Content -->
@@ -62,7 +67,7 @@
         // echo 'If not, click <a href="wherever.php">here</a>.';
 
         $row_usr = query("SELECT * FROM `user` WHERE `email` = '$eml'")[0];
-        session_start();
+        // session_start();
         $_SESSION['reg_email'] = $row_usr['email'];
         
         }else if($eff_rw == 0){

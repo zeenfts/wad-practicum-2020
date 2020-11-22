@@ -93,10 +93,10 @@
             }
         }
 
-        // if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
-        //     $nav_font = $_COOKIE['prf_navbar'];
-        //     $nav_bg = $_COOKIE['prf_navbg'];
-        // }
+        if(!empty($_COOKIE['prf_navbar']) and !empty($_COOKIE['prf_navbg'])){
+            $nav_font = $_COOKIE['prf_navbar'];
+            $nav_bg = $_COOKIE['prf_navbg'];
+        }
     ?>
 
     <!-- Content -->
