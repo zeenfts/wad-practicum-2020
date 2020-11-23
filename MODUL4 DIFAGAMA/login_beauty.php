@@ -44,7 +44,7 @@
 
     <!-- PHP Section -->
     <?php
-        require 'db_conn_byu.php';
+        require 'db_conn.php';
         session_start();
 
         $notif_alert='';
@@ -74,7 +74,7 @@
                     </button>
                 </div>';
 
-                $_SESSION['log_email'] = $user['email'];
+                $_SESSION['email'] = $user['email'];
                 $_SESSION['log_user_id'] = $user['id'];
 
                 if (!isset($_POST['rem_me'])) {
