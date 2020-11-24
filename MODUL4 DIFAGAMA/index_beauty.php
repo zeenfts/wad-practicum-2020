@@ -16,7 +16,7 @@
     <!-- PHP Section -->
     <?php
         require 'db_conn_byu.php';
-        session_destroy();
+        // session_destroy(); _> debug
         $res_row = query("SELECT * FROM prod_catalog");
         $usr_name = '';
         $usr_id = '';

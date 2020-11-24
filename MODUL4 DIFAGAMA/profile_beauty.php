@@ -16,7 +16,7 @@
     <!-- PHP Section -->
     <?php
         require 'db_conn_byu.php';
-        session_start();
+        // session_start();
         $usr_name = '';
         $usr_id = '';
         $light_nav = null;
