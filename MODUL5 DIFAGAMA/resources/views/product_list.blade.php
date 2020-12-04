@@ -26,8 +26,10 @@
                     <td>
                         <div class="row">
                             <div class="col-md-6 p-0">
-                                <form action="" method="post">
-                                    <input type="submit" class="btn btn-success w-50" name="edit_prod" value="Edit">
+                                <form action="{{ route('prod_update', $item) }}" method="post">
+                                    @csrf @method('patch')
+                                    {{-- @include('post.partials.form-control') --}}
+                                    <button type="submit" class="btn btn-success w-50">Edit</button>
                                 </form>
                             </div>
                             <div class="col-md-6 p-0">
@@ -58,7 +60,6 @@
                                                 </button>
                                                 <form action="{{ route('prod_del', $item->id)}}" method="POST">
                                                     @csrf @method('delete')
-                                                    {{-- <input type="hidden" name="id_item" value="{{ $item->id }}"> --}}
                                                     <button class="btn btn-danger" type="submit">
                                                         Delete
                                                     </button>

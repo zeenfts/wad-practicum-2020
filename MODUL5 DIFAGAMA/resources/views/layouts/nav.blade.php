@@ -10,16 +10,16 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
                     <a href="{{ route('home_prod') }}" class="nav-link">HOME</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->is('product')) ? 'active' : '' }}">
                     <a href="{{ route('product_list') }}" class="nav-link">PRODUCT</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->is('order')) ? 'active' : '' }}">
                     <a href="{{ route('order_prod') }}" class="nav-link">ORDER</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->is('history')) ? 'active' : '' }}">
                     <a href="{{ route('history_prod') }}" class="nav-link">HISTORY</a>
                 </li>
             </ul>
