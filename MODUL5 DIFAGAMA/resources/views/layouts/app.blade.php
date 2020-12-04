@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.models.name', 'Laravel') }}</title> --}}
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,7 +25,7 @@
     <div id="app">
         @include('layouts.nav')
 
-        <main class="py-4">
+        <main class="py-5">
             {{-- @include('alert') --}}
             @yield('content')
         </main>
