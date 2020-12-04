@@ -3,7 +3,7 @@
 @section('content')
 <div class="container text-center">
     @if (!$products->isEmpty())
-    <h3>List Product</h3>
+    <h3>List Products</h3>
     <div class="row pb-2">
         <button type="submit" class="btn btn-secondary">Add product</button>
     </div>
@@ -26,13 +26,48 @@
                     <td>
                         <div class="row">
                             <div class="col-md-6 p-0">
-                                <form action="" method="get"
-                                    onsubmit="return confirm('Yakin ingin membatalkan pesanan Skincare ini?');">
+                                <form action="" method="post">
                                     <input type="submit" class="btn btn-success w-50" name="edit_prod" value="Edit">
-                                </form> 
+                                </form>
                             </div>
                             <div class="col-md-6 p-0">
-                                <a href="db_conn_byu.php?delp=" class="btn btn-danger w-50" role="button">Delete</a>
+                                <button type="button" class="btn btn-link text-danger btn-sm p-0" data-toggle="modal"
+                                    data-target="#modal_del">
+                                    Delete
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal_del" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                    Sure to delete this product?
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{-- <p>{{ $products->name->diffForHumans() }}</p> --}}
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <form action="{{ route('prod_del') }}"
+                                                    method="POST">
+                                                    @csrf @method('del_prod')
+                                                    <input type="hidden" name="id_item" value="{{ $products->id }}">
+                                                    <button class="btn btn-danger" type="submit">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </td>
@@ -40,10 +75,10 @@
                 @endforeach
             </tbody>
         </table>
-    @else
-        @include('layouts.empty_table')
-    @endif
-        {{-- {{ dd($products[0]->img_path) }} --}}
     </div>
+    @else
+    @include('layouts.empty_table')
+    @endif
+    {{-- {{ dd($products[0]->img_path) }} --}}
 </div>
 @stop

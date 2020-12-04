@@ -17,7 +17,7 @@
                     <a href="{{ route('product_list') }}" class="nav-link">PRODUCT</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('history_prod') }}" class="nav-link">ORDER</a>
+                    <a href="{{ route('order_prod') }}" class="nav-link">ORDER</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('history_prod') }}" class="nav-link">HISTORY</a>

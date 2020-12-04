@@ -27,10 +27,10 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
     @else
         @include('layouts.empty_table')
     @endif
         {{-- {{ dd($products[0]->img_path) }} --}}
-    </div>
 </div>
 @stop

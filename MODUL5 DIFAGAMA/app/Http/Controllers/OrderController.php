@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
-        return view('history_prod', compact('orders'));
+        $orders = Product::all();
+        return view('order_prod', compact('products'));
     }
 }
