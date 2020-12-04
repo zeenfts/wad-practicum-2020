@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
 
 class ProductController extends Controller
 {
@@ -22,41 +21,37 @@ class ProductController extends Controller
 
     public function add_product()
     {
-        return view('prod_add', [
-            'product' => new Product,
-        ]);
+        return view('secondary/prod_input');
     }
 
-    public function store_product(PostRequest $request)
+    public function store_product(Request $request)
     {
-        $attr = $request->all();
-        // Assign title to the slug
-        // $attr['slug'] = Str::slug(request('title'));
-        // $attr['category_id'] = request('category');
+        $image = time().'.'.request('img_path')->extension();
+        request('img_path')->move(public_path('img'), $image);
+        
+        $attr = new Product();
 
-        $attr['name'] = request('name');
-        $attr['price'] = request('price');
-        $attr['description'] = request('description');
-        $attr['stock'] = request('stock');
-        $attr['img_path'] = request('img_path');
+        $attr->name = request('name');
+        $attr->price = request('price');
+        $attr->description = request('description');
+        $attr->stock = request('stock');
+        $attr->img_path = $image;
+
+        $attr->save();
 
         // Create new post
-        $post = posts()->create($attr);
+        // $post = Product->add_product($attr);
 
-        $post->tags()->attach(request('tags'));
+        // $post->tags()->attach(request('tags'));
 
         // redirect to index
-        return redirect()->route('post.index')->with('success', 'The post was created');
+        return redirect()->route('product_list')->with('success', 'Product was added');
     }
 
-    public function edit_product(Product $prods)
+    public function edit_product($id_item)
     {
-        return view('prod_edit', [
-            'name' => $prods->name,
-            'description' => $prods->description,
-            'price' => $prods->price,
-            'stock' => $prods->stock
-        ]);
+        $prod_update = Product::find($id_item);
+        return view('secondary/prod_edit', compact('prod_update'));
     }
 
     public function update_product(PostRequest $request, Post $post)

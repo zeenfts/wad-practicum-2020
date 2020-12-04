@@ -13,6 +13,6 @@ Route::get('history', [OrderController::class, 'read_orders'])->name('history_pr
 
 Route::get('create', [ProductController::class, 'add_product'])->name('prod_add');
 Route::post('create', [ProductController::class, 'store_product'])->name('prod_store');
-// Route::get('{post:prods}/edit', [ProductController::class, 'edit_product'])->name('prod_edit');
-// Route::patch('{post:prods}/edit', [ProductController::class, 'update_product'])->name('prod_update');
+Route::get('{post:id_item}/edit', [ProductController::class, 'edit_product'])->name('prod_edit');
+Route::patch('{post:item}/edit', [ProductController::class, 'update_product'])->name('prod_update');
 Route::delete('{post:id_item}/delete',[ProductController::class, 'delete_product'])->name('prod_del');

@@ -1,51 +1,23 @@
 @extends('layouts.app')@section('title', 'Input Product')
 
 @section('content')
-<div class="container text-center">
-    <h3>Update Product</h3>
-    <div class="row pt-4">
+<div class="container">
+    <div class="row justify-content-center">
+        <h3>Input Product</h3>
+    </div>
+    <div class="row pt-4 justify-content-center">
         <div class="col-md-auto card-temp">
-            <div class="card">
+            <div class="card" style="width:45em; box-shadow: rgba(0, 0, 0, 0.8) 0px 7px 10px, inset rgba(0, 0, 0, 0.15) 0px 0px 3px;">
                 <div class="card-body">
-                    <div class="form-group row-md-4">
-                        Product Name
-                        <input type="text" class="form-control" name="emaill" value=""
-                        required="required">
-                    </div>
-
-                    <div class="form-group row-md-4">
-                        Price
-                        <input type="number" class="form-control" name="sandi1" value=""
-                        required="required">
-                    </div>
-
-                    <div class="form-group">
-                        Description
-                        <textarea
-                            name="body"
-                            id="body"
-                            class="form-control @error('body') is-invalid @enderror"
-                            >{{ old('body') ?? $prods->description }}</textarea
-                        >
-                        {{-- @error('body')
-                        <div class="mt-2 text-danger">
-                            {{ $message }}
-                        </div>
-                        @enderror --}}
-                    </div>
-                </div>
-                <div class="card-footer text-center">
-                    <input type="submit" class="btn btn-primary" value="Login" name="login_form"
-                        style="width:10em;">
-                    <!-- <input type="reset" class="btn btn-light" value="Clear"
-                        onmouseover="this.style.color='red';" onmouseout="this.style.color='';"> -->
-                    <a class="btn hover-t" href="register_beauty.php">
-                        Belum punya akun? <span class="text-primary">Registrasi</span>
-                    </a>
+                    {{-- <form action="{{ route('prod_store') }}" method="post" enctype="multipart/form-data"> --}}
+                        @csrf
+                        @include('layouts.form_control')
+                        <button type="submit" class="btn btn-primary" style="width:10em;">Submit</button>
+                    {{-- </form> --}}
                 </div>
             </div>
         </div>
     </div>
-        {{-- {{ dd($products[0]->img_path) }} --}}
+    {{-- {{ dd($products[0]->img_path) }} --}}
 </div>
 @stop
