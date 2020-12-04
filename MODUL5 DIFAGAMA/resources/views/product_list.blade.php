@@ -5,7 +5,10 @@
     @if (!$products->isEmpty())
     <h3>List Products</h3>
     <div class="row pb-2">
-        <button type="submit" class="btn btn-secondary">Add product</button>
+        <form action="{{ route('prod_store') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-secondary">Add product</button>
+        </form>
     </div>
     <div class="row">
         <table class="table text-center table-striped">
@@ -26,11 +29,11 @@
                     <td>
                         <div class="row">
                             <div class="col-md-6 p-0">
-                                <form action="{{ route('prod_update', $item) }}" method="post">
-                                    @csrf @method('patch')
+                                {{-- <form action="{{ route('prod_update', $item) }}" method="post"> --}}
+                                    {{-- @csrf @method('patch') --}}
                                     {{-- @include('post.partials.form-control') --}}
                                     <button type="submit" class="btn btn-success w-50">Edit</button>
-                                </form>
+                                {{-- </form> --}}
                             </div>
                             <div class="col-md-6 p-0">
                                 <button type="button" class="btn btn-danger" data-toggle="modal"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 class ProductController extends Controller
 {
@@ -19,9 +20,38 @@ class ProductController extends Controller
         return view('order_prod', compact('products'));
     }
 
+    public function add_product()
+    {
+        return view('prod_add', [
+            'product' => new Product,
+        ]);
+    }
+
+    public function store_product(PostRequest $request)
+    {
+        $attr = $request->all();
+        // Assign title to the slug
+        // $attr['slug'] = Str::slug(request('title'));
+        // $attr['category_id'] = request('category');
+
+        $attr['name'] = request('name');
+        $attr['price'] = request('price');
+        $attr['description'] = request('description');
+        $attr['stock'] = request('stock');
+        $attr['img_path'] = request('img_path');
+
+        // Create new post
+        $post = posts()->create($attr);
+
+        $post->tags()->attach(request('tags'));
+
+        // redirect to index
+        return redirect()->route('post.index')->with('success', 'The post was created');
+    }
+
     public function edit_product(Product $prods)
     {
-        return view('product_list', [
+        return view('prod_edit', [
             'name' => $prods->name,
             'description' => $prods->description,
             'price' => $prods->price,

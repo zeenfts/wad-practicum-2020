@@ -11,6 +11,8 @@ Route::get('product', [ProductController::class, 'read_products'])->name('produc
 Route::get('order', [ProductController::class, 'order'])->name('order_prod');
 Route::get('history', [OrderController::class, 'read_orders'])->name('history_prod');
 
-Route::get('{post:prods}/edit', [ProductController::class, 'edit_product'])->name('prod_edit');
-Route::patch('{post:prods}/edit', [ProductController::class, 'update_product'])->name('prod_update');
+Route::get('create', [ProductController::class, 'add_product'])->name('prod_add');
+Route::post('create', [ProductController::class, 'store_product'])->name('prod_store');
+// Route::get('{post:prods}/edit', [ProductController::class, 'edit_product'])->name('prod_edit');
+// Route::patch('{post:prods}/edit', [ProductController::class, 'update_product'])->name('prod_update');
 Route::delete('{post:id_item}/delete',[ProductController::class, 'delete_product'])->name('prod_del');

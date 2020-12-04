@@ -1,4 +1,4 @@
-@extends('layouts.app')@section('title', 'Update Product')
+@extends('layouts.app')@section('title', 'Input Product')
 
 @section('content')
 <div class="container text-center">
