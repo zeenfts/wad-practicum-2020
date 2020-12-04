@@ -19,9 +19,9 @@ class ProductController extends Controller
         return view('order_prod', compact('products'));
     }
 
-    public function delete_product()
+    public function delete_product($id_item)
     {
-        $prod = Product::find(request('id_item'));
+        $prod = Product::find($id_item);
         $prod->delete();
 
         return redirect(route('product_list'));

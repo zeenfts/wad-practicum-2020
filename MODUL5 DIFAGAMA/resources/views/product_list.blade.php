@@ -31,7 +31,7 @@
                                 </form>
                             </div>
                             <div class="col-md-6 p-0">
-                                <button type="button" class="btn btn-link text-danger btn-sm p-0" data-toggle="modal"
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
                                     data-target="#modal_del">
                                     Delete
                                 </button>
@@ -50,16 +50,15 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                {{-- <p>{{ $products->name->diffForHumans() }}</p> --}}
+                                                <p>{{ $item->name }}</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <form action="{{ route('prod_del') }}"
-                                                    method="POST">
-                                                    @csrf @method('del_prod')
-                                                    <input type="hidden" name="id_item" value="{{ $products->id }}">
+                                                <form action="{{ route('prod_del', $item->id)}}" method="POST">
+                                                    @csrf @method('delete')
+                                                    {{-- <input type="hidden" name="id_item" value="{{ $item->id }}"> --}}
                                                     <button class="btn btn-danger" type="submit">
                                                         Delete
                                                     </button>
