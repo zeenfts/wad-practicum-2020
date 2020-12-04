@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container text-center">
+    @if (!$products->isEmpty())
     <h3>List Product</h3>
     <div class="row pb-2">
         <button type="submit" class="btn btn-secondary">Add product</button>
@@ -17,8 +18,8 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($products as $item)
                 <tr>
-                    @foreach ($products as $item)
                     <th scope="row">{{ $item->id }}</th>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
@@ -39,6 +40,9 @@
                 @endforeach
             </tbody>
         </table>
+    @else
+        @include('layouts.empty_table')
+    @endif
         {{-- {{ dd($products[0]->img_path) }} --}}
     </div>
 </div>
