@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+// use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -74,6 +77,12 @@ class ProductController extends Controller
     public function delete_product(Product $item)
     {
         // $prod = Product::find($id_item);
+        if(File::exists(public_path('img').'/'.$item->img_path)){
+            File::delete(public_path('img').'/'.$item->img_path);
+        }
+        // else{
+        //     dd('File does not exists.');
+        // }
         $item->delete();
 
         return redirect(route('product_list'));

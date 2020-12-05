@@ -33,9 +33,10 @@
                                     data-target="#modal_del">
                                     Delete
                                 </button> --}}
-                                <form action="{{ route('prod_del', $item)}}" method="POST">
+                                <form action="{{ route('prod_del', $item)}}" method="POST" class="form-inline"
+                                    onsubmit="return confirm('Sure to delete this product? [{{ $item->name }}]');">
                                     @csrf @method('delete')
-                                    <button class="btn btn-danger w-50" type="submit">
+                                    <button class="btn btn-danger" type="submit">
                                         Delete
                                     </button>
                                 </form>
