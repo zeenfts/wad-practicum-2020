@@ -26,7 +26,7 @@
                     <td>
                         <div class="row">
                             <div class="col-md-6 p-0">
-                                <a href="{{ route('prod_edit', $item->id) }}" class="btn btn-success w-50">Edit</a>
+                                <a href="{{ route('prod_edit', $item) }}" class="btn btn-success w-50">Edit</a>
                             </div>
                             <div class="col-md-6 p-0">
                                 <button type="button" class="btn btn-danger" data-toggle="modal"

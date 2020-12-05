@@ -13,4 +13,16 @@ class OrderController extends Controller
         $orders = Order::all();
         return view('history_prod', compact('orders'));
     }
+
+    public function order_product(Product $prod)
+    {
+        return view('secondary/prod_order',[
+            'prod'=>$prod,
+        ]);
+    }
+
+    public function history_product()
+    {
+        // return view('secondary/prod_h');
+    }
 }

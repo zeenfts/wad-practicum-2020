@@ -19,7 +19,7 @@ class ProductController extends Controller
 
         }else if(request()->is('order')){
             return view('order_prod', compact('products'));
-            
+
         }
     }
 
@@ -52,10 +52,12 @@ class ProductController extends Controller
         return redirect()->route('product_list')->with('success', 'Product was added');
     }
 
-    public function edit_product($id_item)
+    public function edit_product(Product $item)
     {
-        $prod_update = Product::find($id_item);
-        return view('secondary/prod_edit', compact('prod_update'));
+        // $prod_update = Product::find($id_item);
+        return view('secondary/prod_edit', [
+            'item' => $item,
+            ]);
     }
 
     public function update_product(PostRequest $request, Post $post)

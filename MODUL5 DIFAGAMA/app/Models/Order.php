@@ -13,8 +13,8 @@ class Order extends Model
         'amount', 'buyer_name', 'buyer_contact',
     ];
 
-    // public function orders()
-    // {
-    //     return $this->belongsTo(Product::class, 'product_id');
-    // }
+    public function orders()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

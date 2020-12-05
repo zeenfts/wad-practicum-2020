@@ -17,7 +17,7 @@
                     <b>$ {{ $item->price }}</b>
                 </div>
                 <div class="row pt-2 px-2">
-                    <button type="submit" class="btn btn-info">Order Now</button>
+                    <a href="{{ route('prod_order', $item) }}" class="btn btn-secondary">Order Now</a>
                 </div>
             </div>
         </div>
