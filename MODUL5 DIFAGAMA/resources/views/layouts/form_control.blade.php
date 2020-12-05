@@ -17,8 +17,8 @@
 
 <div class="form-group">
     Description
-    <textarea name="description" id="body" rows=3 class="form-control pt-1" required>
-        {{ isset($item) ? $item->description : '' }}
+    <textarea name="description" id="body" rows=3 class="form-control pt-1" 
+    required>{{ isset($item) ? $item->description :'' }}
     </textarea>
     {{-- <textarea name="description" id="body" rows=3 
         class="form-control pt-1 @error('body') is-invalid @enderror" required="required">
@@ -48,4 +48,13 @@
         </div>
     </div>
 
+</div>
+
+<div class="form-group row d-flex justify-content-between pt-1">
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-primary" style="width:10em;">Submit</button>
+    </div>
+    <div class="col-md-4">
+        <a href="{{ route('product_list') }}" class="btn btn-light w-100">Back</a>
+    </div>
 </div>

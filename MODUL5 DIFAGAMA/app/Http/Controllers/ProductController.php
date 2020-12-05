@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\File;
-
-use function PHPUnit\Framework\isEmpty;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -33,12 +30,15 @@ class ProductController extends Controller
         return view('secondary/prod_input');
     }
 
-    public function store_product()
+    public function store_product(Request $request)
     {
-        $image = date('m').date('d').time().'.'.request('img_path')->getClientOriginalExtension();
-        $PATH = 'img/'.$image;
-        File::put($PATH, file_get_contents(request('img_path')->getRealPath()));
-        
+        if(!$request->hasFile('img_path')){
+            $image='';
+        }else{
+            $image = date('m').date('d').time().'.'.request('img_path')->getClientOriginalExtension();
+            $PATH = 'img/'.$image;
+            File::put($PATH, file_get_contents(request('img_path')->getRealPath()));
+        }
         $attr = new Product();
 
         $attr->name = request('name');

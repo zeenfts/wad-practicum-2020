@@ -12,7 +12,6 @@
                     <form action="{{ route('prod_store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @include('layouts.form_control')
-                        <button type="submit" class="btn btn-primary" style="width:10em;">Submit</button>
                     </form>
                 </div>
             </div>

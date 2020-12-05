@@ -12,7 +12,6 @@
                     <form action="{{ route('prod_update', $item) }}" method="post" enctype="multipart/form-data">
                         @csrf @method('patch')
                         @include('layouts.form_control')
-                        <button type="submit" class="btn btn-primary" style="width:10em;">Submit</button>
                     </form>
                 </div>
             </div>

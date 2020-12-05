@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function read_orders()
     {
-        $orders = Order::all();
+        $orders = Order::latest()->paginate(21);
         return view('history_prod', compact('orders'));
     }
 
@@ -21,8 +21,21 @@ class OrderController extends Controller
         ]);
     }
 
-    public function history_product()
+    public function history_product($ordr, Request $request)
     {
-        // return view('secondary/prod_h');
+        $prods = Product::find($ordr);
+
+        $attr = new Order();
+
+        $attr->product_id = $prods->id;
+        $attr->amount = request('quantity') * $prods->price;
+        $prods->stock -= request('quantity');
+        $attr->buyer_name = request('buyer_name');
+        $attr->buyer_contact = request('buyer_contact');
+
+        $prods->save();
+        $attr->save();
+
+        return redirect()->route('prod_order', $ordr)->with('success', 'Order has been recorder');
     }
 }

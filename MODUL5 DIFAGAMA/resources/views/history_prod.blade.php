@@ -23,12 +23,17 @@
                     <td>{{ $order->product_id }}</td>
                     <td>{{ $order->buyer_name }}</td>
                     <td>{{ $order->buyer_contact}}</td>
-                    <td>{{ $order->amount }}</td>
+                    <td>${{ $order->amount }}.00</td>
                 </tr>
                 @php $num_iter+=1; @endphp
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="row d-flex justify-content-center pt-4">
+        <div>
+            {{ $orders->links() }}
+        </div>
     </div>
     @else
         @include('layouts.empty_table')
