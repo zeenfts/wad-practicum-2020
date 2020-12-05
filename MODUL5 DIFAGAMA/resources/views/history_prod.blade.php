@@ -8,7 +8,7 @@
         <table class="table text-center table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">No</th>
+                    <th scope="col">#</th>
                     <th scope="col">Product</th>
                     <th scope="col">Buyer Name</th>
                     <th scope="col">Contact</th>
@@ -19,7 +19,7 @@
                 @foreach ($orders as $order)
                 <tr>
                     <th scope="row">{{ $order->id }}</th>
-                    <td>{{ $order->product_id->name }}</td>
+                    <td>{{ $order->product_id->first()->name }}</td>
                     <td>{{ $order->buyer_name }}</td>
                     <td>{{ $order->buyer_contact}}</td>
                     <td>{{ $order->amount }}</td>

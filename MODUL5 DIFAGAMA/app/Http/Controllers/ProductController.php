@@ -10,13 +10,17 @@ class ProductController extends Controller
     public function read_products()
     {
         $products = Product::all();
-        return view('product_list', compact('products'));
-    }
 
-    public function order()
-    {
-        $products = Product::all();
-        return view('order_prod', compact('products'));
+        if(request()->is('/')){
+            return view('home_prod', compact('products'));
+
+        }else if(request()->is('product')){
+            return view('product_list', compact('products'));
+
+        }else if(request()->is('order')){
+            return view('order_prod', compact('products'));
+            
+        }
     }
 
     public function add_product()

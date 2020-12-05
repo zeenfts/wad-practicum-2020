@@ -1,18 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 
 // Route::get('/', 'HomeController@index')->name('home');
-Route::get('/', [HomeController::class, 'index'])->name('home_prod');
+Route::get('/', [ProductController::class, 'read_products'])->name('home_prod');
 Route::get('product', [ProductController::class, 'read_products'])->name('product_list');
-Route::get('order', [ProductController::class, 'order'])->name('order_prod');
+Route::get('order', [ProductController::class, 'read_products'])->name('order_prod');
 Route::get('history', [OrderController::class, 'read_orders'])->name('history_prod');
 
 Route::get('create', [ProductController::class, 'add_product'])->name('prod_add');
 Route::post('create', [ProductController::class, 'store_product'])->name('prod_store');
-Route::get('{post:id_item}/edit', [ProductController::class, 'edit_product'])->name('prod_edit');
-Route::patch('{post:item}/edit', [ProductController::class, 'update_product'])->name('prod_update');
-Route::delete('{post:id_item}/delete',[ProductController::class, 'delete_product'])->name('prod_del');
+Route::get('{id}/edit', [ProductController::class, 'edit_product'])->name('prod_edit');
+Route::patch('{id}/edit', [ProductController::class, 'update_product'])->name('prod_update');
+Route::delete('{id}/delete',[ProductController::class, 'delete_product'])->name('prod_del');

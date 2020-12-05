@@ -11,7 +11,7 @@
         <table class="table text-center table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">No</th>
+                    <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Action</th>
@@ -26,12 +26,7 @@
                     <td>
                         <div class="row">
                             <div class="col-md-6 p-0">
-                                {{-- <form action="{{ route('prod_update', $item) }}" method="post"> --}}
-                                {{-- @csrf @method('patch') --}}
-                                {{-- @include('post.partials.form-control') --}}
-                                {{-- <button type="submit" class="btn btn-success w-50">Edit</button> --}}
                                 <a href="{{ route('prod_edit', $item->id) }}" class="btn btn-success w-50">Edit</a>
-                                {{-- </form> --}}
                             </div>
                             <div class="col-md-6 p-0">
                                 <button type="button" class="btn btn-danger" data-toggle="modal"
