@@ -16,7 +16,7 @@
                 <li class="nav-item {{ (request()->is('product')) ? 'active' : '' }}">
                     <a href="{{ route('product_list') }}" class="nav-link">PRODUCT</a>
                 </li>
-                <li class="nav-item {{ (request()->is('order')) ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->is('order') or request()->segment(2) == 'order') ? 'active' : '' }}">
                     <a href="{{ route('order_prod') }}" class="nav-link">ORDER</a>
                 </li>
                 <li class="nav-item {{ (request()->is('history')) ? 'active' : '' }}">

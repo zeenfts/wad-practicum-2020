@@ -19,7 +19,7 @@
                 @foreach ($orders as $order)
                 <tr>
                     <th scope="row">{{ $order->id }}</th>
-                    <td>{{ $order->product_id->first()->name }}</td>
+                    <td>{{ $order->product_id }}</td>
                     <td>{{ $order->buyer_name }}</td>
                     <td>{{ $order->buyer_contact}}</td>
                     <td>{{ $order->amount }}</td>

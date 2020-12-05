@@ -28,7 +28,7 @@ class ProductController extends Controller
         return view('secondary/prod_input');
     }
 
-    public function store_product(Request $request)
+    public function store_product()
     {
         $image = time().'.'.request('img_path')->extension();
         request('img_path')->move(public_path('img'), $image);
@@ -66,9 +66,9 @@ class ProductController extends Controller
         $attr['category_id'] = request('category');
 
         $post->update($attr);
-        $post->tags()->sync(request('tags'));
+        $post->orders()->sync(request('item'));
 
-        return redirect()->route('post.index')->with('success', 'The post was updated');
+        return redirect()->route('product_list')->with('success', 'The post was updated');
     }
 
     public function delete_product($id_item)
