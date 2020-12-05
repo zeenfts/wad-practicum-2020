@@ -71,10 +71,10 @@ class ProductController extends Controller
         return redirect()->route('product_list')->with('success', 'The post was updated');
     }
 
-    public function delete_product($id_item)
+    public function delete_product(Product $item)
     {
-        $prod = Product::find($id_item);
-        $prod->delete();
+        // $prod = Product::find($id_item);
+        $item->delete();
 
         return redirect(route('product_list'));
     }

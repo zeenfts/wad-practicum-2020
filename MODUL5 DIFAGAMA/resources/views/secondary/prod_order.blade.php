@@ -11,7 +11,7 @@
                 <div class="card-body p-2">
                     <div class="row px-2">
                         <div class="col-md-6 px-2">
-                            <img src="{{ $prod->img_path }}" style="width:100%; height:100%">
+                            <img src="{{ preg_match('/(http|ftp|mailto)/', $prod->img_path) ? $prod->img_path : asset('img').'/'.$prod->img_path }}" style="width:100%; height:12em">
                         </div>
                         <div class="col-md-6 px-2">
                             <h4>{{ $prod->name }}</h4>

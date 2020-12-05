@@ -29,10 +29,16 @@
                                 <a href="{{ route('prod_edit', $item) }}" class="btn btn-success w-50">Edit</a>
                             </div>
                             <div class="col-md-6 p-0">
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                {{-- <button type="button" class="btn btn-danger w-50" data-toggle="modal"
                                     data-target="#modal_del">
                                     Delete
-                                </button>
+                                </button> --}}
+                                <form action="{{ route('prod_del', $item)}}" method="POST">
+                                    @csrf @method('delete')
+                                    <button class="btn btn-danger w-50" type="submit">
+                                        Delete
+                                    </button>
+                                </form>
                                 <!-- Modal -->
                                 <div class="modal fade" id="modal_del" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -54,7 +60,7 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <form action="{{ route('prod_del', $item->id)}}" method="POST">
+                                                <form action="{{ route('prod_del', $item)}}" method="POST">
                                                     @csrf @method('delete')
                                                     <button class="btn btn-danger" type="submit">
                                                         Delete
