@@ -16,14 +16,16 @@
                 </tr>
             </thead>
             <tbody>
+                @php $num_iter=1; @endphp
                 @foreach ($orders as $order)
                 <tr>
-                    <th scope="row">{{ $order->id }}</th>
+                    <th scope="row">{{ $num_iter }}</th>
                     <td>{{ $order->product_id }}</td>
                     <td>{{ $order->buyer_name }}</td>
                     <td>{{ $order->buyer_contact}}</td>
                     <td>{{ $order->amount }}</td>
                 </tr>
+                @php $num_iter+=1; @endphp
                 @endforeach
             </tbody>
         </table>

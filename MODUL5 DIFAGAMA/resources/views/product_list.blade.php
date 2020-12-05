@@ -18,9 +18,10 @@
                 </tr>
             </thead>
             <tbody>
+                @php $num_iter=1; @endphp
                 @foreach ($products as $item)
                 <tr>
-                    <th scope="row">{{ $item->id }}</th>
+                    <th scope="row">{{ $num_iter }}</th>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
@@ -34,7 +35,7 @@
                                     Delete
                                 </button> --}}
                                 <form action="{{ route('prod_del', $item)}}" method="POST" class="form-inline"
-                                    onsubmit="return confirm('Sure to delete this product? [{{ $item->name }}]');">
+                                    onsubmit="return confirm('Sure to delete this product? \n\n>> {{ $item->name }} <<');">
                                     @csrf @method('delete')
                                     <button class="btn btn-danger" type="submit">
                                         Delete
@@ -75,6 +76,7 @@
                         </div>
                     </td>
                 </tr>
+                @php $num_iter+=1; @endphp
                 @endforeach
             </tbody>
         </table>

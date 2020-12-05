@@ -13,8 +13,8 @@ Route::get('history', [OrderController::class, 'read_orders'])->name('history_pr
 Route::get('create', [ProductController::class, 'add_product'])->name('prod_add');
 Route::post('create', [ProductController::class, 'store_product'])->name('prod_store');
 Route::get('{item:id}/edit', [ProductController::class, 'edit_product'])->name('prod_edit');
-Route::patch('{item:id}/edit', [ProductController::class, 'update_product'])->name('prod_update');
+Route::patch('{id}/edit', [ProductController::class, 'update_product'])->name('prod_update');
 Route::delete('{item:id}/delete',[ProductController::class, 'delete_product'])->name('prod_del');
 
 Route::get('{prod:id}/order', [OrderController::class, 'order_product'])->name('prod_order');
-Route::post('{prod:id}/order', [OrderController::class, 'history_product'])->name('prod_hist');
+Route::post('{id}/order', [OrderController::class, 'history_product'])->name('prod_hist');

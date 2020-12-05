@@ -60,14 +60,16 @@ class ProductController extends Controller
             ]);
     }
 
-    public function update_product(Product $attr, Request $request)
+    public function update_product($item, Request $request)
     {
+        $attr = Product::find($item);
+
         $attr->name = request('name');
         $attr->price = request('price');
         $attr->description = request('description');
         $attr->stock = request('stock');
 
-        if($request->hasFile('img_path')){
+        if(!$request->hasFile('img_path')){
             $attr->img_path = request('img_hddn');
         }else{
             $image = date('m').date('d').time().'.'.request('img_path')->getClientOriginalExtension();
@@ -81,7 +83,7 @@ class ProductController extends Controller
             $attr->img_path = $image;
         }
 
-        $attr->update();
+        $attr->save();
 
         return redirect()->route('product_list')->with('success', 'Product was updated');
     }
