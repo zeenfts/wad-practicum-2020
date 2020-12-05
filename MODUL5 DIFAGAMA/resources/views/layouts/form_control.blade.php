@@ -15,15 +15,19 @@
 
 <div class="form-group">
     Description
-    <textarea name="description" id="body" rows=3
-        class="form-control pt-1 @error('body') is-invalid @enderror">
+    <textarea name="description" id="body" rows=3 
+        class="form-control pt-1" required>
+        {{ isset($item) ? $item->description : '' }}
+    </textarea>
+    {{-- <textarea name="description" id="body" rows=3 
+        class="form-control pt-1 @error('body') is-invalid @enderror" required="required">
         {{ isset($item) ? $item->description : '' }}
     </textarea>
     @error('body')
     <div class="mt-2 text-danger">
-        {{ $message }}
-</div>
-@enderror
+        isilah
+    </div>
+    @enderror --}}
 </div>
 
 <div class="form-group row-md-4">
@@ -35,7 +39,8 @@
     Image file input
     <div class="input-group pt-1">
         <div class="custom-file">
-            <input type="file" class="custom-file-input" required="required" accept="image/*" id="inputImage" name="img_path">
+            <input type="hidden" name="img_hddn" value="{{ isset($item) ? $item->img_path : '' }}">
+            <input type="file" class="custom-file-input" accept="image/*" id="inputImage" name="img_path">
             <label for="inputImage" class="custom-file-label">{{ isset($item) ? \Str::limit($item->img_path, 53) : 'Choose Image' }}</label>
         </div>
     </div>

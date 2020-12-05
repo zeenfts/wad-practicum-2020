@@ -79,9 +79,14 @@
             </tbody>
         </table>
     </div>
+    <div class="d-flex justify-content-center pt-4">
+        <div>
+            {{ $products->links() }}
+        </div>
+    </div>
     @else
-    @include('layouts.empty_table')
+        @include('layouts.empty_table')
     @endif
     {{-- {{ dd($products[0]->img_path) }} --}}
-</div>
+</div> 
 @stop

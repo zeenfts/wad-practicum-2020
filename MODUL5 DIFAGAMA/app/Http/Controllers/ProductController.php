@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-// use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\File;
+
+use function PHPUnit\Framework\isEmpty;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     public function read_products()
     {
-        $products = Product::all();
+        $products = Product::latest()->paginate(12);
 
         if(request()->is('/')){
             return view('home_prod', compact('products'));
@@ -33,8 +35,9 @@ class ProductController extends Controller
 
     public function store_product()
     {
-        $image = time().'.'.request('img_path')->extension();
-        request('img_path')->move(public_path('img'), $image);
+        $image = date('m').date('d').time().'.'.request('img_path')->getClientOriginalExtension();
+        $PATH = 'img/'.$image;
+        File::put($PATH, file_get_contents(request('img_path')->getRealPath()));
         
         $attr = new Product();
 
@@ -46,12 +49,6 @@ class ProductController extends Controller
 
         $attr->save();
 
-        // Create new post
-        // $post = Product->add_product($attr);
-
-        // $post->tags()->attach(request('tags'));
-
-        // redirect to index
         return redirect()->route('product_list')->with('success', 'Product was added');
     }
 
@@ -63,15 +60,30 @@ class ProductController extends Controller
             ]);
     }
 
-    public function update_product(PostRequest $request, Post $post)
+    public function update_product(Product $attr, Request $request)
     {
-        $attr = $request->all();
-        $attr['category_id'] = request('category');
+        $attr->name = request('name');
+        $attr->price = request('price');
+        $attr->description = request('description');
+        $attr->stock = request('stock');
 
-        $post->update($attr);
-        $post->orders()->sync(request('item'));
+        if($request->hasFile('img_path')){
+            $attr->img_path = request('img_hddn');
+        }else{
+            $image = date('m').date('d').time().'.'.request('img_path')->getClientOriginalExtension();
+            $PATH = 'img/'.$image;
+            File::put($PATH, file_get_contents(request('img_path')->getRealPath()));
 
-        return redirect()->route('product_list')->with('success', 'The post was updated');
+            if(File::exists(public_path('img').'/'.$attr->img_path)){
+                File::delete(public_path('img').'/'.$attr->img_path);
+            }
+
+            $attr->img_path = $image;
+        }
+
+        $attr->update();
+
+        return redirect()->route('product_list')->with('success', 'Product was updated');
     }
 
     public function delete_product(Product $item)
@@ -85,6 +97,6 @@ class ProductController extends Controller
         // }
         $item->delete();
 
-        return redirect(route('product_list'));
+        return redirect(route('product_list'))->with('success', 'Product was deleted');
     }
 }
