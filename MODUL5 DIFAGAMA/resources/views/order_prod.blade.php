@@ -23,10 +23,12 @@
                     </div>
                     <div class="row mt-auto pt-2 px-2 text-left">
                         <div class="col-md-12">
-                            <b>${{ $item->price }}.00</b>
+                            <b>${{ sprintf("%.2f",($item->price)) }}</b>
                         </div>
                         <div class="col-md-12 pt-1">
-                            <a href="{{ route('prod_order', $item) }}" class="btn btn-secondary">Order Now</a>
+                            <a href="{{ route('prod_order', $item) }}"
+                                class="btn{{ ($item->stock <= 0) ? '' : ' btn-secondary' }}" style="{{ ($item->stock <= 0) ? 'pointer-events: none;
+                                cursor: default;' : '' }}">{{ ($item->stock <= 0) ? '' : 'Order Now' }}</a>
                         </div>
                     </div>
                 </div>
@@ -40,9 +42,9 @@
             {{ $products->links() }}
         </div>
     </div>
-        @else
-            @include('layouts.empty_table')
-        @endif
-        {{-- {{ dd($products[0]->img_path) }} --}}
+    @else
+    @include('layouts.empty_table')
+    @endif
+    {{-- {{ dd($products[0]->img_path) }} --}}
 </div>
 @stop

@@ -33,9 +33,17 @@ class OrderController extends Controller
         $attr->buyer_name = request('buyer_name');
         $attr->buyer_contact = request('buyer_contact');
 
-        $prods->save();
-        $attr->save();
+        if($prods->stock < 0){
+            return redirect()->route('prod_order', $ordr)->with('error', 'Insufficient stocks');
+        
+        }else{
+            if($attr->save()){
+                $prods->save();
+            }else{
+                return redirect()->route('prod_order', $ordr)->with('error', 'Order has not been recorded!!');
+            }
 
-        return redirect()->route('prod_order', $ordr)->with('success', 'Order has been recorder');
+            return redirect()->route('prod_order', $ordr)->with('success', 'Order has been recorded');
+        }
     }
 }

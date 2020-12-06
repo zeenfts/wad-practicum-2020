@@ -23,7 +23,7 @@
                     <td>{{ $order->product_id }}</td>
                     <td>{{ $order->buyer_name }}</td>
                     <td>{{ $order->buyer_contact}}</td>
-                    <td>${{ $order->amount }}.00</td>
+                    <td>${{ sprintf("%.2f",($order->amount)) }}</td>
                 </tr>
                 @php $num_iter+=1; @endphp
                 @endforeach

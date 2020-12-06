@@ -47,9 +47,11 @@ class ProductController extends Controller
         $attr->stock = request('stock');
         $attr->img_path = $image;
 
-        $attr->save();
-
-        return redirect()->route('product_list')->with('success', 'Product was added');
+        if($attr->save()){
+            return redirect()->route('product_list')->with('success', 'Product was added');
+        }else{
+            return redirect()->route('product_list')->with('error', 'Product was not added!!');
+        }
     }
 
     public function edit_product(Product $item)
@@ -83,9 +85,11 @@ class ProductController extends Controller
             $attr->img_path = $image;
         }
 
-        $attr->save();
-
-        return redirect()->route('product_list')->with('success', 'Product was updated');
+        if($attr->save()){
+            return redirect()->route('product_list')->with('success', 'Product was updated');
+        }else{
+            return redirect()->route('product_list')->with('error', 'Product was not updated!!');
+        }
     }
 
     public function delete_product(Product $item)
@@ -97,8 +101,10 @@ class ProductController extends Controller
         // else{
         //     dd('File does not exists.');
         // }
-        $item->delete();
-
-        return redirect(route('product_list'))->with('success', 'Product was deleted');
+        if($item->delete()){
+            return redirect(route('product_list'))->with('success', 'Product was deleted');
+        }else{
+            return redirect(route('product_list'))->with('error', 'Product was not deleted!!');
+        }
     }
 }

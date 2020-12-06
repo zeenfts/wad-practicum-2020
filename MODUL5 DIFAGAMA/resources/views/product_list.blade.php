@@ -23,7 +23,7 @@
                 <tr>
                     <th scope="row">{{ $num_iter }}</th>
                     <td>{{ $item->name }}</td>
-                    <td>${{ $item->price }}.00</td>
+                    <td>${{ sprintf("%.2f",($item->price)) }}</td>
                     <td>
                         <div class="row">
                             <div class="col-md-6 p-0">

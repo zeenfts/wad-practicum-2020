@@ -17,7 +17,7 @@
                             <h4>{{ $prod->name }}</h4>
                             <p style="font-size:14px">{{ $prod->description }}</p>
                             <p>Stock: {{ $prod->stock }}</p>
-                            <b>${{ $prod->price }}.00</b>
+                            <b>${{ sprintf("%.2f",($prod->price)) }}</b>
                         </div>
                     </div>
                 </div>

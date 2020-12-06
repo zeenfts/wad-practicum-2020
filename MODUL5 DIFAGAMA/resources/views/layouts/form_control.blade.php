@@ -11,7 +11,7 @@
             <span class="input-group-text">$ USD</span>
         </div>
         <input type="number" class="form-control" required="required" value="{{ isset($item) ? $item->price : ''}}"
-            name="price">
+            name="price" step=".01">
     </div>
 </div>
 
@@ -55,6 +55,6 @@
         <button type="submit" class="btn btn-primary" style="width:10em;">Submit</button>
     </div>
     <div class="col-md-4">
-        <a href="{{ route('product_list') }}" class="btn btn-light w-100">Back</a>
+        <a href="{{ route('product_list') }}" class="btn btn-light w-100">Cancel</a>
     </div>
 </div>
