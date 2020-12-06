@@ -13,7 +13,7 @@ class Product extends Model
         'name', 'price', 'description', 'stock', 'img_path',
     ];
 
-    public function orders()
+    public function order_by()
     {
         return $this->hasMany(Order::class, 'product_id');
     }

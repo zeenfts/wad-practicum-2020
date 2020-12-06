@@ -20,7 +20,7 @@
                 @foreach ($orders as $order)
                 <tr>
                     <th scope="row">{{ $num_iter }}</th>
-                    <td>{{ $order->product_id }}</td>
+                    <td>{{ $order->order_from->name }}</td>
                     <td>{{ $order->buyer_name }}</td>
                     <td>{{ $order->buyer_contact}}</td>
                     <td>${{ sprintf("%.2f",($order->amount)) }}</td>

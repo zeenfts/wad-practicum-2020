@@ -21,14 +21,14 @@
                     <div class="row px-2 text-center">
                         <p>{{ $item->description }}</p>
                     </div>
-                    <div class="row mt-auto pt-2 px-2 text-left">
+                    <div class="row mt-auto px-0 text-left">
                         <div class="col-md-12">
                             <b>${{ sprintf("%.2f",($item->price)) }}</b>
                         </div>
                         <div class="col-md-12 pt-1">
                             <a href="{{ route('prod_order', $item) }}"
                                 class="btn{{ ($item->stock <= 0) ? '' : ' btn-secondary' }}" style="{{ ($item->stock <= 0) ? 'pointer-events: none;
-                                cursor: default;' : '' }}">{{ ($item->stock <= 0) ? '' : 'Order Now' }}</a>
+                                cursor: default;' : '' }}">{{ ($item->stock <= 0) ? 'Out of stocks' : 'Order Now' }}</a>
                         </div>
                     </div>
                 </div>

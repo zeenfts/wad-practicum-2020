@@ -13,7 +13,7 @@ class Order extends Model
         'amount', 'buyer_name', 'buyer_contact',
     ];
 
-    public function orders()
+    public function order_from()
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
